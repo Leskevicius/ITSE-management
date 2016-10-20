@@ -1,1 +1,1 @@
-# ITSE-management
+# Senior Project
