@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { routes, ROUTES_PROVIDERS } from './app.routes';
 import { HOME_DECLARATIONS } from './home';
 import { AUTH_DECLARATIONS } from './auth';
+import { LANDING_DECLARATIONS } from './landing';
 
 // Material stuff
 import { MdButtonModule } from "@angular2-material/button";
@@ -37,7 +38,8 @@ import { MdListModule } from "@angular2-material/list";
   declarations: [
     AppComponent,
     HOME_DECLARATIONS,
-    AUTH_DECLARATIONS
+    AUTH_DECLARATIONS,
+    LANDING_DECLARATIONS
   ],
   providers: [
     // ...ROUTES_PROVIDERS
