@@ -1,6 +1,6 @@
 /// <reference types="zone.js" />
 /// <reference types="meteor-typings" />
-// / <reference types="@types/underscore" />
+//// <reference types="@types/underscore" />
 
 declare module '*.html' {
   const template: string;

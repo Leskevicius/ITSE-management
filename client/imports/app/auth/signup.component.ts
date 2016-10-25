@@ -26,6 +26,8 @@ export class SignupComponent implements OnInit {
     this.error = '';
   }
 
+
+
   signup() {
     if (this.signupForm.valid) {
       Accounts.createUser({
