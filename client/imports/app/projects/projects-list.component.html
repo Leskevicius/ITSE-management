@@ -2,8 +2,10 @@ hmm
 <div>
   <ul>
     <li *ngFor="let project of projects | async">
-      {{project.name}}
+      <a [routerLink]="['/project', project._id]">{{project.name}}</a>
       <p>{{project.description}}</p>
+      <p>{{project.features}}</p>
+      <p>{{project.contact}}</p>
     </li>
   </ul>
 </div>

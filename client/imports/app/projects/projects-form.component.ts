@@ -17,7 +17,9 @@ export class ProjectsFormComponent implements OnInit {
   ngOnInit() {
     this.addForm = this.formBuilder.group({
       name: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required],
+      features: ['', Validators.required],
+      contact: ['', Validators.required]
     });
   }
 

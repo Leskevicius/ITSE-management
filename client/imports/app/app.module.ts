@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
+import { Roles } from 'meteor/alanning:roles';
 
 import { AppComponent } from './app.component';
 import { routes, ROUTES_PROVIDERS } from './app.routes';
@@ -28,6 +29,7 @@ import { MdListModule } from "@angular2-material/list";
     AccountsModule,
     FormsModule,
     ReactiveFormsModule,
+    Roles,
     // material stuff
     MdCoreModule.forRoot(),
     MdButtonModule.forRoot(),
@@ -46,7 +48,7 @@ import { MdListModule } from "@angular2-material/list";
     PROJECTS_DECLARATIONS
   ],
   providers: [
-    // ...ROUTES_PROVIDERS
+    ...ROUTES_PROVIDERS
   ],
   bootstrap: [
     AppComponent

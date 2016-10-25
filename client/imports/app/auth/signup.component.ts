@@ -12,6 +12,8 @@ import template from './signup.component.html';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   error: string;
+  isClient: boolean = true;
+  isSudent: boolean = false;
 
   constructor(private router: Router, private zone: NgZone, private formBuilder: FormBuilder) {}
 

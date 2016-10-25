@@ -12,6 +12,14 @@
         <md-input formControlName="password" type="password" placeholder="Password"></md-input>
 
         <div layout="row" layout-align="space-between center">
+            <md-checkbox [(ngModel)]="isClient" [ngModelOptions]="{standalone: true}">Client</md-checkbox>
+        </div>
+
+        <div layout="row" layout-align="space-between center">
+            <md-checkbox [(ngModel)]="isStudent" [ngModelOptions]="{standalone: true}">Student</md-checkbox>
+        </div>
+
+        <div layout="row" layout-align="space-between center">
           <button md-raised-button class="md-primary" type="submit" aria-label="login">Sign Up</button>
         </div>
       </form>
