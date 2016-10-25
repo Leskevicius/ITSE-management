@@ -1,0 +1,9 @@
+hmm
+<div>
+  <ul>
+    <li *ngFor="let project of projects | async">
+      {{project.name}}
+      <p>{{project.description}}</p>
+    </li>
+  </ul>
+</div>

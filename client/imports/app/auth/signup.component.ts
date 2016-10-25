@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
             this.error = err;
           });
         } else {
-          this.router.navigate(['/']);
+          this.router.navigate(['home/student/']);
         }
       });
     }

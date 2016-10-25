@@ -9,6 +9,8 @@ import { routes, ROUTES_PROVIDERS } from './app.routes';
 import { HOME_DECLARATIONS } from './home';
 import { AUTH_DECLARATIONS } from './auth';
 import { LANDING_DECLARATIONS } from './landing';
+import { STUDENT_HOME_DECLARATIONS } from './home/student';
+import { PROJECTS_DECLARATIONS } from './projects';
 
 // Material stuff
 import { MdButtonModule } from "@angular2-material/button";
@@ -39,7 +41,9 @@ import { MdListModule } from "@angular2-material/list";
     AppComponent,
     HOME_DECLARATIONS,
     AUTH_DECLARATIONS,
-    LANDING_DECLARATIONS
+    LANDING_DECLARATIONS,
+    STUDENT_HOME_DECLARATIONS,
+    PROJECTS_DECLARATIONS
   ],
   providers: [
     // ...ROUTES_PROVIDERS
