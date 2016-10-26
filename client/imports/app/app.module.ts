@@ -13,6 +13,7 @@ import { LANDING_DECLARATIONS } from './landing';
 import { STUDENT_HOME_DECLARATIONS } from './home/student';
 import { CLIENT_HOME_DECLARATIONS } from './home/client';
 import { PROJECTS_DECLARATIONS } from './projects';
+import { TEAMS_DECLARATIONS } from './teams';
 
 // Material stuff
 import { MdButtonModule } from "@angular2-material/button";
@@ -47,7 +48,8 @@ import { MdListModule } from "@angular2-material/list";
     LANDING_DECLARATIONS,
     STUDENT_HOME_DECLARATIONS,
     CLIENT_HOME_DECLARATIONS,
-    PROJECTS_DECLARATIONS
+    PROJECTS_DECLARATIONS,
+    TEAMS_DECLARATIONS
   ],
   providers: [
     ...ROUTES_PROVIDERS
