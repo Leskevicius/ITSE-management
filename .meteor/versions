@@ -22,7 +22,6 @@ caching-html-compiler@1.0.6
 callback-hook@1.0.9
 check@1.2.3
 coffeescript@1.1.4
-dab0mb:ionic-assets@1.3.2
 ddp@1.2.5
 ddp-client@1.2.9
 ddp-common@1.2.6
@@ -61,7 +60,6 @@ modules@0.7.6_1
 modules-runtime@0.7.6_1
 mongo@1.1.12_1
 mongo-id@1.0.5
-mys:accounts-phone@0.0.21
 npm-bcrypt@0.9.1_1
 npm-mongo@1.5.49
 observe-sequence@1.0.12

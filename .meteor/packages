@@ -21,9 +21,7 @@ hwillson:stub-collections
 dispatch:mocha-phantomjs
 shell-server@0.2.1
 accounts-password
-dab0mb:ionic-assets
 anti:fake
 check
 email
-mys:accounts-phone
 alanning:roles

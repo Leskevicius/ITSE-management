@@ -44,6 +44,8 @@ export const ROUTES_PROVIDERS = [{
 
 
 function checkPremissions(accountType: string, group: string) {
-  return Roles.userIsInRole(Meteor.userId(),
+  var booleanValue = Roles.userIsInRole(Meteor.userId(),
                             [accountType], group);
+  console.log("premission checked. value: ", booleanValue);
+  return booleanValue;
 }

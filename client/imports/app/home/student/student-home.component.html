@@ -1,14 +1,32 @@
 <h1>Student Home</h1>
 
-<a md-button [routerLink]="['/projects']">Project List</a>
+<!-- <a md-raised-button [routerLink]="['/projects']">Project List</a> -->
 
-<button (click)="checkIt()">Check it</button>
+<!-- <md-list>
+  <md-list-item>Join Team</md-list-item>
+  <md-divider></md-divider>
+
+  <md-list-item [routerLink]="['/projects']">Projects</md-list-item>
+  <md-divider></md-divider>
+  <md-list-item>Clients</md-list-item>
+  <md-divider></md-divider>
+</md-list> -->
+
+<md-nav-list>
+  <a md-list-item href="/projects">Join Team</a>
+  <a md-list-item href="/projects">Projects</a>
+  <a md-list-item href="/projects">Clients</a>
+  <a md-list-item href="/projects">Project Bidding</a>
+  <a md-list-item href="/projects">Project Recommendations</a>
+</md-nav-list>
+
+<!-- <button (click)="checkIt()">Check it</button>
 
 <div *ngIf="amI">
   <p>Yes I am a student</p>
-</div>
+</div> -->
 
-<md-card>
+<!-- <md-card>
   <md-card-content>
     <h5 class="md-title ma-name">
       BLA
@@ -30,4 +48,4 @@
       BLA3
     </h5>
   </md-card-content>
-</md-card>
+</md-card> -->
