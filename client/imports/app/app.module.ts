@@ -11,6 +11,7 @@ import { HOME_DECLARATIONS } from './home';
 import { AUTH_DECLARATIONS } from './auth';
 import { LANDING_DECLARATIONS } from './landing';
 import { STUDENT_HOME_DECLARATIONS } from './home/student';
+import { CLIENT_HOME_DECLARATIONS } from './home/client';
 import { PROJECTS_DECLARATIONS } from './projects';
 
 // Material stuff
@@ -45,6 +46,7 @@ import { MdListModule } from "@angular2-material/list";
     AUTH_DECLARATIONS,
     LANDING_DECLARATIONS,
     STUDENT_HOME_DECLARATIONS,
+    CLIENT_HOME_DECLARATIONS,
     PROJECTS_DECLARATIONS
   ],
   providers: [

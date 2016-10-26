@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
   isClient: boolean = true;
   isSudent: boolean = false;
   id: string;
+  accountType: string = 'student';
 
   constructor(private router: Router, private zone: NgZone, private formBuilder: FormBuilder) {}
 
@@ -32,14 +33,15 @@ export class SignupComponent implements OnInit {
   login() {
     if (this.signupForm.valid) {
       Meteor.loginWithPassword(this.signupForm.value.email, this.signupForm.value.password, () => {
-        this.router.navigate(['home/student/']);
+        this.router.navigate(['home/' + this.accountType + '/']);
       });
     }
   }
 
   signup() {
     if (this.signupForm.valid) {
-      MeteorObservable.call('signup', this.signupForm.value.email, this.signupForm.value.password).subscribe(() => {
+      this.fixAccountType();
+      MeteorObservable.call('signup', this.signupForm.value.email, this.signupForm.value.password, this.accountType).subscribe(() => {
         //success
         this.login();
         console.log('account created, logged in, redirected...');
@@ -48,6 +50,14 @@ export class SignupComponent implements OnInit {
           this.error = error;
         });
       });
+    }
+  }
+
+  fixAccountType() {
+    if (this.isClient) {
+      this.accountType = 'client';
+    } else {
+      this.accountType = 'student';
     }
   }
 }
