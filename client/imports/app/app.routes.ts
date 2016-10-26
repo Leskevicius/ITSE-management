@@ -31,11 +31,15 @@ export const ROUTES_PROVIDERS = [{
 },
 {
   provide: 'canActivateForStudent',
-  useValue: () => !! checkPremissions('student', 'default-group')
+  useValue: () => checkPremissions('student', 'default-group')
 },
 {
   provide: 'canActivateForClient',
-  useValue: () => !! checkPremissions('client', 'default-group')
+  useValue: () => checkPremissions('client', 'default-group')
+},
+{
+  provide: 'canActivateForAdmin',
+  useValue: () => checkPremissions('admin', Roles.GLOBAL_GROUP)
 }];
 
 
