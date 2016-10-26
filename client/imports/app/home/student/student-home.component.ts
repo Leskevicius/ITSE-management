@@ -9,6 +9,12 @@ import template from './student-home.component.html';
   template
 })
 export class StudentHomeComponent implements OnInit {
+  // amI: boolean = false;
+  //
+  // checkIt() {
+  //   this.amI = Roles.userIsInRole(Meteor.userId(),
+  //                           ['student'], 'default-group');
+  // }
 
   ngOnInit() {
 
