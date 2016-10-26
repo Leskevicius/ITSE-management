@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
   error: string;
   isClient: boolean = true;
   isSudent: boolean = false;
+  id: string;
 
   constructor(private router: Router, private zone: NgZone, private formBuilder: FormBuilder) {}
 
@@ -30,7 +31,7 @@ export class SignupComponent implements OnInit {
 
   signup() {
     if (this.signupForm.valid) {
-      Accounts.createUser({
+      this.id = Accounts.createUser({
         email: this.signupForm.value.email,
         password: this.signupForm.value.password
       }, (err) => {
@@ -39,9 +40,11 @@ export class SignupComponent implements OnInit {
             this.error = err;
           });
         } else {
+          Roles.addUsersToRoles(this.id, 'student', 'default-group');
           this.router.navigate(['home/student/']);
         }
       });
+
     }
   }
 }
