@@ -32,9 +32,29 @@ export class LoginComponent implements OnInit {
             this.error = err;
           });
         } else {
-          this.router.navigate(['home/student/']);
+          // this.router.navigate(['home/student/']);
+          this.reroute();
         }
       });
     }
+  }
+
+  reroute() {
+    var id = Meteor.userId();
+    if (this.checkPremissions('client', 'default-group')) {
+      this.router.navigate(['home/client/']);
+    } else if (this.checkPremissions('student', 'default-group')) {
+      this.router.navigate(['home/student/']);
+    } else {
+      this.router.navigate(['']);
+    }
+
+  }
+
+  checkPremissions(accountType: string, group: string): boolean {
+    var booleanValue = Roles.userIsInRole(Meteor.userId(),
+                              [accountType], group);
+    console.log("premission checked. value: ", booleanValue);
+    return booleanValue;
   }
 }

@@ -1,33 +1,14 @@
 <h1>Client Home</h1>
 
-<a md-button [routerLink]="['/projects']">Project List</a>
+<!-- <a md-button [routerLink]="['/projects']">Project List</a> -->
 
-<button (click)="checkIt()">Check it</button>
+<!-- <button (click)="checkIt()">Check it</button>
 
 <div *ngIf="amI">
   <p>Yes I am a Client</p>
-</div>
+</div> -->
 
-<md-card>
-  <md-card-content>
-    <h5 class="md-title ma-name">
-      BLA
-    </h5>
-  </md-card-content>
-</md-card>
-
-<md-card>
-  <md-card-content>
-    <h5 class="md-title ma-name">
-      BLA2
-    </h5>
-  </md-card-content>
-</md-card>
-
-<md-card>
-  <md-card-content>
-    <h5 class="md-title ma-name">
-      BLA3
-    </h5>
-  </md-card-content>
-</md-card>
+<md-nav-list>
+  <a md-list-item href="/projects">Create Profile</a>
+  <a md-list-item href="/projects">Manage Projects</a>
+</md-nav-list>
