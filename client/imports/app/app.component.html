@@ -1,9 +1,13 @@
 <md-toolbar color="primary">
-  <div [hidden]="user">
+  <!-- <div [hidden]="user">
     <a routerLink="/" class="md-title">ITSE</a>
   </div>
   <div [hidden]="!user">
     <a routerLink="/home/student" class="md-title">ITSE</a>
+  </div> -->
+  <div>
+    <a md-button class="md-title" (click)="reroute()">ITSE</a>
+
   </div>
   <span class="fill-remaining-space"></span>
   <div [hidden]="user">
