@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Meteor } from 'meteor/meteor';
 
-import { Projects } from '../../../../both/collections/projects.collection';
+import { Teams } from '../../../../both/collections/teams.collection';
 
 import template from './teams-create.component.html';
 
@@ -17,16 +18,17 @@ export class TeamsCreateComponent implements OnInit {
   ngOnInit() {
     this.addForm = this.formBuilder.group({
       name: ['', Validators.required],
-      description: ['', Validators.required],
-      features: ['', Validators.required],
-      contact: ['', Validators.required]
     });
   }
 
-  addParty(): void {
+  addTeam(): void {
     if (this.addForm.valid) {
-      Projects.insert(this.addForm.value);
+      Teams.insert({
+        name: this.addForm.value.name,
+        owner: Meteor.userId()
+      });
 
+      console.log("added new team");
       this.addForm.reset();
     }
   }

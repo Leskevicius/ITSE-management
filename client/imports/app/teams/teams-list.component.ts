@@ -3,8 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 
-import { Projects } from '../../../../both/collections/projects.collection';
-import { Project } from '../../../../both/models/project.model';
+import { Teams } from '../../../../both/collections/teams.collection';
+import { Team } from '../../../../both/models/team.model';
 
 import template from './teams-list.component.html';
 
@@ -13,15 +13,15 @@ import template from './teams-list.component.html';
  template
 })
 export class TeamsListComponent implements OnInit, OnDestroy {
-  projects: Observable<Project[]>;
-  projectsSub: Subscription;
+  teams: Observable<Team[]>;
+  teamsSub: Subscription;
 
   ngOnInit() {
-    this.projects = Projects.find({}).zone();
-    this.projectsSub = MeteorObservable.subscribe('projects').subscribe();
+    this.teams = Teams.find({}).zone();
+    this.teamsSub = MeteorObservable.subscribe('teams').subscribe();
   }
 
   ngOnDestroy() {
-    this.projectsSub.unsubscribe();
+    this.teamsSub.unsubscribe();
   }
 }

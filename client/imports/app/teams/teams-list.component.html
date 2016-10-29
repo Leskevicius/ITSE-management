@@ -1,7 +1,8 @@
-<div style="overflow-y: auto;">
+<h1>Team list</h1>
+<div>
   <ul>
-    <li *ngFor="let project of projects | async">
-      <a [routerLink]="['/project', project._id]">{{project.name}}</a>
+    <li *ngFor="let team of teams | async">
+      <a [routerLink]="['/team', team._id]">{{team.name}}</a>
     </li>
   </ul>
 </div>
