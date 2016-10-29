@@ -10,11 +10,13 @@ import { LandingPageComponent } from './landing/landing-page.component';
 import { LoginComponent } from './auth/login.component';
 import { SignupComponent } from './auth/signup.component';
 import { RecoverComponent } from "./auth/recover.component";
-import { AppComponent } from './app.component';
 
 // project stuff
 import { ProjectsListComponent } from './projects/projects-list.component';
 import { ProjectDetailsComponent } from './projects/project-details.component';
+import { ProjectsFormComponent } from './projects/projects-form.component';
+// client project list...uses different publication to show only their projects
+import { ProjectsClientListComponent } from './projects/projects-client-list.component';
 
 // team stuff
 import { TeamsCreateComponent } from './teams/teams-create.component';
@@ -26,10 +28,13 @@ export const routes: Route[] = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'recover', component: RecoverComponent },
-  { path: 'home/student', component: StudentHomeComponent, canActivate: ['canActivateForStudent']},
-  { path: 'home/client', component: ClientHomeComponent, canActivate: ['canActivateForClient']},
+  { path: 'student', component: StudentHomeComponent, canActivate: ['canActivateForStudent']},
+  { path: 'client', component: ClientHomeComponent, canActivate: ['canActivateForClient']},
+  { path: 'client/projects', component: ProjectsClientListComponent, canActivate: ['canActivateForClient'] },
   { path: 'projects', component: ProjectsListComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'project/:projectId', component: ProjectDetailsComponent, canActivate: ['canActivateForLoggedIn'] },
+  { path: 'projects/create', component: ProjectsFormComponent },
+  { path: 'teams', component: TeamsListComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'teams/create', component: TeamsCreateComponent, canActivate: ['canActivateForStudent'] }
 ];
 

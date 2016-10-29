@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
     if (this.signupForm.valid) {
       Meteor.loginWithPassword(this.signupForm.value.email, this.signupForm.value.password, () => {
         console.log('logging in: accountType: ', this.accountType);
-        this.router.navigate(['home/' + this.accountType + '/']);
+        this.router.navigate([this.accountType + '/']);
       });
     }
   }

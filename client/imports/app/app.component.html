@@ -1,10 +1,4 @@
 <md-toolbar color="primary">
-  <!-- <div [hidden]="user">
-    <a routerLink="/" class="md-title">ITSE</a>
-  </div>
-  <div [hidden]="!user">
-    <a routerLink="/home/student" class="md-title">ITSE</a>
-  </div> -->
   <div>
     <a md-button class="md-title" (click)="reroute()">ITSE</a>
 
@@ -15,7 +9,7 @@
     <a md-button [routerLink]="['/signup']">Sign up</a>
   </div>
   <div [hidden]="!user">
-    <span>{{ user }}</span>
+    <span>{{ user | displayName }}</span>
     <button md-button (click)="logout()">Logout</button>
   </div>
 </md-toolbar>

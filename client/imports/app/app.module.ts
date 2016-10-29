@@ -7,6 +7,7 @@ import { AccountsModule } from 'angular2-meteor-accounts-ui';
 
 import { AppComponent } from './app.component';
 import { routes, ROUTES_PROVIDERS } from './app.routes';
+import { SHARED_DECLARATIONS } from './shared';
 import { HOME_DECLARATIONS } from './home';
 import { AUTH_DECLARATIONS } from './auth';
 import { LANDING_DECLARATIONS } from './landing';
@@ -43,6 +44,7 @@ import { MdListModule } from "@angular2-material/list";
   ],
   declarations: [
     AppComponent,
+    SHARED_DECLARATIONS,
     HOME_DECLARATIONS,
     AUTH_DECLARATIONS,
     LANDING_DECLARATIONS,

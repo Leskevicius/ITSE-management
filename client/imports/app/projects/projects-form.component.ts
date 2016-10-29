@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -18,14 +19,21 @@ export class ProjectsFormComponent implements OnInit {
     this.addForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
+      // clientId: Meteor.userId(),
       features: ['', Validators.required],
       contact: ['', Validators.required]
     });
   }
 
-  addParty(): void {
+  addProject(): void {
     if (this.addForm.valid) {
-      Projects.insert(this.addForm.value);
+      Projects.insert({
+        name: this.addForm.value.name,
+        description: this.addForm.value.description,
+        clientId: Meteor.userId(),
+        features: this.addForm.value.features,
+        contact: this.addForm.value.contact
+      });
 
       this.addForm.reset();
     }

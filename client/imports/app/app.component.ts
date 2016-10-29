@@ -26,9 +26,9 @@ export class AppComponent {
 
   reroute() {
     if (this.checkPremissions('student','default-group')) {
-      this.router.navigate(['/home/student/']);
+      this.router.navigate(['/student/']);
     } else if (this.checkPremissions('client','default-group')) {
-      this.router.navigate(['/home/client/']);
+      this.router.navigate(['/client/']);
     } else {
       this.router.navigate(['/']);
     }

@@ -1,15 +1,36 @@
-<form [formGroup]="addForm" (ngSubmit)="addProject()">
-  <label>Name</label>
-  <input type="text" formControlName="name">
+<div class="md-content" layout="row" layout-align="center start" layout-fill layout-margin>
+  <div layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
+    <!-- <md-toolbar class="md-primary" color="primary">
+      Create Team
+    </md-toolbar> -->
+    <h1>Create Project</h1>
 
-  <label>Description</label>
-  <input type="text" formControlName="description">
+    <div layout="column" layout-fill layout-margin layout-padding>
+      <form [formGroup]="addForm" #f="ngForm" (ngSubmit)="addProject()"
+            layout="column" layout-fill layout-padding layout-margin>
+        <div layout="row">
+          <md-input formControlName="name" type="name" placeholder="Project name"></md-input>
+        </div>
+        <div layout="row">
+          <md-input formControlName="description" type="description" placeholder="Project description"></md-input>
+        </div>
+        <div layout="row">
+          <md-input formControlName="features" type="features" placeholder="Project features"></md-input>
+        </div>
+        <div layout="row">
+          <md-input formControlName="contact" type="contact" placeholder="Project contact"></md-input>
+        </div>
+        <div layout="row" layout-align="space-between center">
+          <button md-raised-button class="md-primary" type="submit" aria-label="login">Create</button>
+        </div>
+      </form>
 
-  <label>Features</label>
-  <input type="text" formControlName="features">
+      <!-- <div [hidden]="error == ''">
+        <md-toolbar class="md-warn" layout="row" layout-fill layout-padding layout-margin>
+          <p class="md-body-1">{{ error }}</p>
+        </md-toolbar>
+      </div> -->
 
-  <label>Contact</label>
-  <input type="text" formControlName="contact">
-
-  <button type="submit">Add</button>
-</form>
+    </div>
+  </div>
+</div>
