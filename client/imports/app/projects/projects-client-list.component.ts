@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -18,7 +19,8 @@ export class ProjectsClientListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.projects = Projects.find({}).zone();
-    this.projectsSub = MeteorObservable.subscribe('projects').subscribe();
+    this.projectsSub = MeteorObservable.subscribe('client-projects', Meteor.userId()).subscribe();
+    console.log('done ngOnInit()');
   }
 
   ngOnDestroy() {

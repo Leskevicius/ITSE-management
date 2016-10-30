@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Accounts } from 'meteor/accounts-base';
 import { MeteorObservable } from 'meteor-rxjs';
 
-
 import template from './signup.component.html';
 
 @Component({
