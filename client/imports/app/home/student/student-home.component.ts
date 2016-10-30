@@ -32,7 +32,7 @@ export class StudentHomeComponent implements OnInit, OnDestroy {
 
   ownsTeam() {
     var query = { owner: Meteor.userId() }
-    var found = Teams.find({});
+    var found = Teams.findOne(query);
     console.log(found);
     console.log('done');
   }

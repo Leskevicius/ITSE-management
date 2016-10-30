@@ -1,9 +1,14 @@
 import { Route } from '@angular/router';
 import { Meteor } from 'meteor/meteor';
 
-// home stuff
+// student stuff
 import { StudentHomeComponent } from './home/student/student-home.component';
+import { UpdateStudentProfileComponent } from './home/student/update-student-profile.component';
+
+
+// client stuff
 import { ClientHomeComponent } from './home/client/client-home.component';
+import { UpdateClientProfileComponent } from './home/client/update-client-profile.component';
 
 // landing page @ account management stuff
 import { LandingPageComponent } from './landing/landing-page.component';
@@ -29,8 +34,10 @@ export const routes: Route[] = [
   { path: 'signup', component: SignupComponent },
   { path: 'recover', component: RecoverComponent },
   { path: 'student', component: StudentHomeComponent, canActivate: ['canActivateForStudent']},
+  { path: 'student/profile', component: UpdateStudentProfileComponent, canActivate: ['canActivateForStudent'] },
   { path: 'client', component: ClientHomeComponent, canActivate: ['canActivateForClient']},
   { path: 'client/projects', component: ProjectsClientListComponent, canActivate: ['canActivateForClient'] },
+  { path: 'client/profile', component: UpdateClientProfileComponent, canActivate: ['canActivateForClient'] },
   { path: 'projects', component: ProjectsListComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'project/:projectId', component: ProjectDetailsComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'projects/create', component: ProjectsFormComponent },

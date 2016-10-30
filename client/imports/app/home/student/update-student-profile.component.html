@@ -3,18 +3,18 @@
     <!-- <md-toolbar class="md-primary" color="primary">
       Create Team
     </md-toolbar> -->
-    <h1>Client Profile</h1>
+    <h1>Student Profile</h1>
 
     <div layout="column" layout-fill layout-margin layout-padding>
-      <form *ngIf="client" (submit)="updateClient()"
+      <form *ngIf="student" (submit)="updateStudent()"
             layout="column" layout-fill layout-padding layout-margin>
         <label>Email</label>
         <div layout="row">
-          <md-input [(ngModel)]="client.contact.email" name="email"></md-input>
+          <md-input [(ngModel)]="student.contact.email" name="email"></md-input>
         </div>
         <label>Phone number</label>
         <div layout="row">
-          <md-input [(ngModel)]="client.contact.phone" name="phone"></md-input>
+          <md-input [(ngModel)]="student.contact.phone" name="phone"></md-input>
         </div>
         <div layout="row" layout-align="space-between center">
           <button md-raised-button class="md-primary" type="submit" aria-label="login">Update</button>

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Meteor } from 'meteor/meteor';
 
 import { Teams } from '../../../../both/collections/teams.collection';
+import { Students } from '../../../../both/collections/students.collection';
 
 import template from './teams-create.component.html';
 
@@ -27,6 +28,16 @@ export class TeamsCreateComponent implements OnInit {
         name: this.addForm.value.name,
         owner: Meteor.userId()
       });
+      // must register students entry with team document id
+      var id = Teams.findOne({owner: Meteor.userId()})._id
+
+      console.log(id);
+
+      Students.update({studentId: Meteor.userId()}, {
+        $set: {
+          teamId: id
+        }
+      })
 
       console.log("added new team");
       this.addForm.reset();

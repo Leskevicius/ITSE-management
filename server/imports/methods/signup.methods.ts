@@ -14,11 +14,17 @@ Meteor.methods({
     Roles.addUsersToRoles(this.id, accountType, 'default-group');
     console.log(this.id);
     if (accountType === 'client') {
-      Clients.insert({clientId: this.id});
+      Clients.insert({
+        clientId: this.id,
+        contact: {email: '', phone: ''}
+      });
       console.log('created Clients entry');
     }
     else if (accountType === 'student') {
-      Students.insert({studentId: this.id});
+      Students.insert({
+        studentId: this.id,
+        contact: {email: '', phone: ''}
+      });
       console.log('created Students entry');
     }
   }

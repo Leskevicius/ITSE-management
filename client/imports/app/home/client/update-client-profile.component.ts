@@ -1,41 +1,45 @@
 import { Meteor } from 'meteor/meteor';
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+import { MeteorObservable } from 'meteor-rxjs';
 
 import { Clients } from '../../../../../both/collections/clients.collection';
+import { Client } from '../../../../../both/models/client.model';
 
-import template from './update-client-profile.html';
+import template from './update-client-profile.component.html';
 
 @Component({
-  selector: 'client-profile-form',
+  selector: 'update-client-profile',
   template
 })
-export class UpdateClientProfileComponent implements OnInit {
-  updateForm: FormGroup;
+export class UpdateClientProfileComponent implements OnInit, OnDestroy {
+  client: Client;
+  clientSub: Subscription;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    this.updateForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      phone: ['', Validators.required]
+    this.clientSub = MeteorObservable.subscribe('client', Meteor.userId()).subscribe(() => {
+      this.client = Clients.findOne({clientId: Meteor.userId()});
     });
   }
 
-  addProject(): void {
-    if (this.updateForm.valid) {
-      Clients.insert({
-        name: this.updateForm.value.name,
-        description: this.updateForm.value.description,
-        clientId: Meteor.userId(),
-        features: this.updateForm.value.features,
-        contact: this.updateForm.value.contact
-      });
 
-      this.updateForm.reset();
-      this.router.navigate(['client/']);
-    }
+  updateClient() {
+    Clients.update(this.client._id, {
+      $set: {
+        'contact.email' : this.client.contact.email,
+        'contact.phone' : this.client.contact.phone
+      }
+    });
+
+    this.router.navigate(['/client/']);
+  }
+
+  ngOnDestroy() {
+    this.clientSub.unsubscribe();
   }
   // saveParty() {
   //   Parties.update(this.party._id, {
