@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { Teams } from '../../../../both/collections/teams.collection';
 import { Students } from '../../../../both/collections/students.collection';
+import { Student } from '../../../../both/models/student.model';
 
 import template from './teams-create.component.html';
 
@@ -13,6 +14,8 @@ import template from './teams-create.component.html';
 })
 export class TeamsCreateComponent implements OnInit {
   addForm: FormGroup;
+  student: Student
+  // studentSub: Subscription
 
   constructor(private formBuilder: FormBuilder) {}
 
