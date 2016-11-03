@@ -24,6 +24,10 @@ export class UpdateStudentProfileComponent implements OnInit, OnDestroy {
     this.studentSub = MeteorObservable.subscribe('student', Meteor.userId()).subscribe(() => {
       this.student = Students.findOne({studentId: Meteor.userId()});
     });
+
+    if ( this.student ) {
+      console.log('success');
+    }
   }
 
 

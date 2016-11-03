@@ -20,16 +20,19 @@ export class AppComponent {
   checkPremissions(accountType: string, group: string): boolean {
     var booleanValue = Roles.userIsInRole(Meteor.userId(),
                               [accountType], group);
-    console.log("premission checked. value: ", booleanValue);
     return booleanValue;
   }
 
   reroute() {
-    if (this.checkPremissions('student','default-group')) {
+    if (this.checkPremissions('student','default-group') ||
+        this.checkPremissions('pm','default-group')) {
+      console.log('student or pm');
       this.router.navigate(['/student/']);
     } else if (this.checkPremissions('client','default-group')) {
+      console.log('client');
       this.router.navigate(['/client/']);
     } else {
+      console.log('meh');
       this.router.navigate(['/']);
     }
   }

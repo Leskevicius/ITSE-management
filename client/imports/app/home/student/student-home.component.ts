@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 
-import { Teams } from '../../../../../both/collections/teams.collection';
-import { Team } from '../../../../../both/models/team.model';
+import { Students } from '../../../../../both/collections/students.collection';
+import { Student } from '../../../../../both/models/student.model';
 
 import template from './student-home.component.html';
 
@@ -15,30 +15,41 @@ import template from './student-home.component.html';
   template
 })
 export class StudentHomeComponent implements OnInit, OnDestroy {
-  // amI: boolean = false;
-  //
-  // checkIt() {
-  //   this.amI = Roles.userIsInRole(Meteor.userId(),
-  //                           ['student'], 'default-group');
-  // }
-  teams: Observable<Team[]>;
-  teamsSub: Subscription;
+  student: Student;
+  studentSub: Subscription;
 
+  isPM: boolean;
+  hasTeam: boolean;
 
   ngOnInit() {
-    this.teams = Teams.find({}).zone();
-    this.teamsSub = MeteorObservable.subscribe('teams').subscribe();
-  }
+    this.studentSub = MeteorObservable.subscribe('student', Meteor.userId()).subscribe(() => {
+      MeteorObservable.autorun().subscribe(() => {
+        this.student = Students.findOne({studentId: Meteor.userId()});
+        
+        this.hasTeam = this.inTeam();
+      });
+    });
 
-  ownsTeam() {
-    var query = { owner: Meteor.userId() }
-    var found = Teams.findOne(query);
-    console.log(found);
-    console.log('done');
+
+    this.isPM = this.checkPremissions('pm', 'default-group');
   }
 
   ngOnDestroy() {
-    this.teamsSub.unsubscribe();
+    this.studentSub.unsubscribe();
+  }
+
+  checkPremissions(accountType: string, group: string): boolean {
+    var booleanValue = Roles.userIsInRole(Meteor.userId(),
+                              [accountType], group);
+    return booleanValue;
+  }
+
+  inTeam(): boolean {
+    if (!this.student) {
+      return false;
+    } else if (this.student.teamId) {
+      return true;
+    } else return false;
   }
 
 }

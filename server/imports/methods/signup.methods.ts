@@ -16,11 +16,12 @@ Meteor.methods({
     if (accountType === 'client') {
       Clients.insert({
         clientId: this.id,
-        contact: {email: '', phone: ''}
+        contact: {email: '', phone: ''},
       });
       console.log('created Clients entry');
     }
-    else if (accountType === 'student') {
+    else if (accountType === 'student' ||
+             accountType === 'pm') {
       Students.insert({
         studentId: this.id,
         contact: {email: '', phone: ''}

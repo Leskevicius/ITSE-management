@@ -14,7 +14,8 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   error: string;
   isClient: boolean = true;
-  isSudent: boolean = false;
+  isStudent: boolean = false;
+  isPM: boolean = false;
   id: string;
   accountType: string = 'student';
 
@@ -32,15 +33,17 @@ export class SignupComponent implements OnInit {
   login() {
     if (this.signupForm.valid) {
       Meteor.loginWithPassword(this.signupForm.value.email, this.signupForm.value.password, () => {
-        console.log('logging in: accountType: ', this.accountType);
-        this.router.navigate([this.accountType + '/']);
+        if (this.accountType === 'pm') {
+          this.router.navigate(['student/'])
+        } else {
+          this.router.navigate([this.accountType + '/']);
+        }
       });
     }
   }
 
   signup() {
     if (this.signupForm.valid) {
-      this.fixAccountType();
       MeteorObservable.call('signup', this.signupForm.value.email, this.signupForm.value.password, this.accountType).subscribe(() => {
         //success
         this.login();
@@ -50,14 +53,6 @@ export class SignupComponent implements OnInit {
           this.error = error;
         });
       });
-    }
-  }
-
-  fixAccountType() {
-    if (this.isClient) {
-      this.accountType = 'client';
-    } else {
-      this.accountType = 'student';
     }
   }
 }

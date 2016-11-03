@@ -51,8 +51,10 @@ export const ROUTES_PROVIDERS = [{
 },
 {
   provide: 'canActivateForStudent',
-  useValue: () => checkPremissions('student', 'default-group')
-},
+  useValue: () => {
+    return (checkPremissions('student', 'default-group') ||
+    checkPremissions('pm', 'default-group'))
+}},
 {
   provide: 'canActivateForClient',
   useValue: () => checkPremissions('client', 'default-group')

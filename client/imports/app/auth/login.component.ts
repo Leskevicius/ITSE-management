@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Meteor } from 'meteor/meteor';
 import { Router } from '@angular/router';
+import { MeteorObservable } from 'meteor-rxjs';
 
 import template from './login.component.html';
 
@@ -43,7 +44,8 @@ export class LoginComponent implements OnInit {
     var id = Meteor.userId();
     if (this.checkPremissions('client', 'default-group')) {
       this.router.navigate(['client/']);
-    } else if (this.checkPremissions('student', 'default-group')) {
+    } else if (this.checkPremissions('student', 'default-group') ||
+               this.checkPremissions('pm', 'default-group')) {
       this.router.navigate(['student/']);
     } else {
       this.router.navigate(['']);
@@ -54,7 +56,6 @@ export class LoginComponent implements OnInit {
   checkPremissions(accountType: string, group: string): boolean {
     var booleanValue = Roles.userIsInRole(Meteor.userId(),
                               [accountType], group);
-    console.log("premission checked. value: ", booleanValue);
     return booleanValue;
   }
 }

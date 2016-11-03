@@ -24,6 +24,7 @@ import { MdCardModule } from "@angular2-material/card";
 import { MdCoreModule } from "@angular2-material/core";
 import { MdCheckboxModule } from "@angular2-material/checkbox";
 import { MdListModule } from "@angular2-material/list";
+import { MdRadioModule } from "@angular2-material/radio";
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { MdListModule } from "@angular2-material/list";
     MdInputModule.forRoot(),
     MdCardModule.forRoot(),
     MdCheckboxModule.forRoot(),
-    MdListModule.forRoot()
+    MdListModule.forRoot(),
+    MdRadioModule.forRoot()
   ],
   declarations: [
     AppComponent,

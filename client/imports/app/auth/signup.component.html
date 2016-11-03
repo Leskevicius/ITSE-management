@@ -11,13 +11,19 @@
         <md-input formControlName="email" type="email" placeholder="Email"></md-input>
         <md-input formControlName="password" type="password" placeholder="Password"></md-input>
 
-        <div layout="row" layout-align="space-between center">
+        <!-- <div layout="row" layout-align="space-between center">
             <md-checkbox [(ngModel)]="isClient" [ngModelOptions]="{standalone: true}">Client</md-checkbox>
         </div>
 
         <div layout="row" layout-align="space-between center">
             <md-checkbox [(ngModel)]="isStudent" [ngModelOptions]="{standalone: true}">Student</md-checkbox>
-        </div>
+        </div> -->
+
+        <md-radio-group [(ngModel)]="accountType" [ngModelOptions]="{standalone: true}">
+          <md-radio-button value="client">Client</md-radio-button>
+          <md-radio-button value="student">Student</md-radio-button>
+          <md-radio-button value="pm">PM</md-radio-button>
+        </md-radio-group>
 
         <div layout="row" layout-align="space-between center">
           <button md-raised-button class="md-primary" type="submit" aria-label="login">Sign Up</button>

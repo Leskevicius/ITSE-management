@@ -1,15 +1,11 @@
 <h1>Student Home</h1>
 
-<a md-button class="md-title" (click)="ownsTeam()">ownsTeam</a>
-
-<!-- <ul>
-  <li *ngFor="let team of teams | async">
-    <a [routerLink]="['/']">{{team.name}}</a>
-  </li>
-</ul> -->
+<!-- <a md-button class="md-title" (click)="ownsTeam()">ownsTeam</a> -->
 
 <md-nav-list>
-  <a md-list-item routerLink="/teams/create">Create Team</a>
+  <a *ngIf="isPM && !hasTeam" md-list-item routerLink="/teams/create">Create Team</a>
+  <a *ngIf="isPM && hasTeam" md-list-item routerLink="/teams/create">Manage Team</a>
+  <a *ngIf="!isPM && !hasTeam" md-list-item routerLink="/teams/join">Join Team</a>
   <a md-list-item routerLink="/student/profile">Manage Profile</a>
   <a md-list-item routerLink="/projects">Projects</a>
   <a md-list-item routerLink="/projects">Project Bidding</a>
