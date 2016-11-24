@@ -20,9 +20,15 @@
         </div> -->
 
         <md-radio-group [(ngModel)]="accountType" [ngModelOptions]="{standalone: true}">
+          <div layout="row" layout-align="space-between center">
           <md-radio-button value="client">Client</md-radio-button>
+          </div>
+          <div layout="row" layout-align="space-between center">
           <md-radio-button value="student">Student</md-radio-button>
+          </div>
+          <div layout="row" layout-align="space-between center">
           <md-radio-button value="pm">PM</md-radio-button>
+          </div>
         </md-radio-group>
 
         <div layout="row" layout-align="space-between center">

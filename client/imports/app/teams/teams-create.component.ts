@@ -36,10 +36,11 @@ export class TeamsCreateComponent implements OnInit, OnDestroy {
     if (this.addForm.valid) {
       Teams.insert({
         name: this.addForm.value.name,
-        owner: Meteor.userId()
+        owner: Meteor.userId(),
+        memberId: [Meteor.userId()]
       });
       // must register students entry with team document id
-      var id = Teams.findOne({owner: Meteor.userId()})._id
+      var id = Teams.findOne({owner: Meteor.userId()})._id;
 
       Students.update(this.student._id, {
         $set: {

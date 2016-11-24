@@ -1,6 +1,5 @@
 import { Route } from '@angular/router';
 import { Meteor } from 'meteor/meteor';
-
 // student stuff
 import { StudentHomeComponent } from './home/student/student-home.component';
 import { UpdateStudentProfileComponent } from './home/student/update-student-profile.component';
@@ -22,10 +21,14 @@ import { ProjectDetailsComponent } from './projects/project-details.component';
 import { ProjectsFormComponent } from './projects/projects-form.component';
 // client project list...uses different publication to show only their projects
 import { ProjectsClientListComponent } from './projects/projects-client-list.component';
+import { ProjectsBidComponent } from './projects/projects-bid.component';
 
 // team stuff
 import { TeamsCreateComponent } from './teams/teams-create.component';
 import { TeamsListComponent } from './teams/teams-list.component';
+import { TeamHomeComponent } from './teams/team-home.component';
+import { TeamsJoinComponent } from './teams/teams-join.component';
+
 
 
 export const routes: Route[] = [
@@ -41,8 +44,11 @@ export const routes: Route[] = [
   { path: 'projects', component: ProjectsListComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'project/:projectId', component: ProjectDetailsComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'projects/create', component: ProjectsFormComponent },
+  { path: 'projects/bid', component: ProjectsBidComponent },
   { path: 'teams', component: TeamsListComponent, canActivate: ['canActivateForLoggedIn'] },
-  { path: 'teams/create', component: TeamsCreateComponent, canActivate: ['canActivateForStudent'] }
+  { path: 'teams/create', component: TeamsCreateComponent, canActivate: ['canActivateForStudent'] },
+  { path: 'team/:teamId', component: TeamHomeComponent, canActivate: ['canActivateForLoggedIn'] },
+  { path: 'teams/join', component: TeamsJoinComponent, canActivate: ['canActivateForStudent'] }
 ];
 
 export const ROUTES_PROVIDERS = [{
@@ -68,6 +74,6 @@ export const ROUTES_PROVIDERS = [{
 function checkPremissions(accountType: string, group: string) {
   var booleanValue = Roles.userIsInRole(Meteor.userId(),
                             [accountType], group);
-  console.log("premission checked. value: ", booleanValue);
+  // console.log("premission checked. value: ", booleanValue);
   return booleanValue;
 }

@@ -26,13 +26,12 @@ export class AppComponent {
   reroute() {
     if (this.checkPremissions('student','default-group') ||
         this.checkPremissions('pm','default-group')) {
-      console.log('student or pm');
+      // console.log('student or pm');
       this.router.navigate(['/student/']);
     } else if (this.checkPremissions('client','default-group')) {
-      console.log('client');
+      // console.log('client');
       this.router.navigate(['/client/']);
     } else {
-      console.log('meh');
       this.router.navigate(['/']);
     }
   }

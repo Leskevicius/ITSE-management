@@ -25,8 +25,9 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     .map(params => params['projectId'])
     .subscribe(projectId => {
       this.projectId = projectId;
-
+      console.log("projectID: ", this.projectId);
       this.project = Projects.findOne(this.projectId);
+      console.log("Project name: ", this.project.name);
     });
   }
 

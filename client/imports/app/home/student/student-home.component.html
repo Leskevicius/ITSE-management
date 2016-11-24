@@ -8,6 +8,8 @@
   <a *ngIf="!isPM && !hasTeam" md-list-item routerLink="/teams/join">Join Team</a>
   <a md-list-item routerLink="/student/profile">Manage Profile</a>
   <a md-list-item routerLink="/projects">Projects</a>
-  <a md-list-item routerLink="/projects">Project Bidding</a>
-  <a md-list-item routerLink="/projects">Team</a>
+  <a md-list-item routerLink="/projects/bid">Project Bidding</a>
+  <a *ngIf="hasTeam" md-list-item [routerLink]="['/team', teamId]">Team</a>
 </md-nav-list>
+
+<!-- <a [routerLink]="['/project', project._id]">{{project.name}}</a> -->
