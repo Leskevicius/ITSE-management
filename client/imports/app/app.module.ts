@@ -26,6 +26,8 @@ import { MdCheckboxModule } from "@angular2-material/checkbox";
 import { MdListModule } from "@angular2-material/list";
 import { MdRadioModule } from "@angular2-material/radio";
 
+import { DragulaModule } from 'ng2-dragula/ng2-dragula';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { MdRadioModule } from "@angular2-material/radio";
     MdCardModule.forRoot(),
     MdCheckboxModule.forRoot(),
     MdListModule.forRoot(),
-    MdRadioModule.forRoot()
+    MdRadioModule.forRoot(),
+    DragulaModule
   ],
   declarations: [
     AppComponent,

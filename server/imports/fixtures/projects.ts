@@ -22,13 +22,13 @@ export function loadProjects() {
 
     projects.forEach((project: Project) => Projects.insert(project));
 
-    for (var i = 0; i < 25; i++) {
-      Projects.insert({
-        name: Fake.sentence(10),
-        description: Fake.sentence(100),
-        features: Fake.sentence(75),
-        contact: Fake.sentence(15)
-      });
-    }
+    // for (var i = 0; i < 25; i++) {
+    //   Projects.insert({
+    //     name: Fake.sentence(10),
+    //     description: Fake.sentence(100),
+    //     features: Fake.sentence(75),
+    //     contact: Fake.sentence(15)
+    //   });
+    // }
   }
 }
