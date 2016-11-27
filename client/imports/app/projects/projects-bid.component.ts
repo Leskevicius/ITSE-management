@@ -11,6 +11,9 @@ import { Project } from '../../../../both/models/project.model';
 import { Students } from '../../../../both/collections/students.collection';
 import { Student } from '../../../../both/models/student.model';
 
+import { Teams } from '../../../../both/collections/teams.collection';
+import { Team } from '../../../../both/models/Team.model';
+
 import { ProjectBid } from '../../../../both/models/project-bid.model';
 
 import template from './projects-bid.component.html';
@@ -27,6 +30,8 @@ export class ProjectsBidComponent implements OnInit, OnDestroy {
   student: Student;
   studentSub: Subscription;
   projectBids: ProjectBid[] = [];
+  team: Team;
+  teamSub: Subscription;
 
   constructor(private dragulaService: DragulaService, private router: Router) {
 
@@ -97,6 +102,9 @@ export class ProjectsBidComponent implements OnInit, OnDestroy {
         else
           console.log("student not found...");
 
+        this.teamSub = MeteorObservable.subscribe('team', this.student.teamId).subscribe(() => {
+          this.team = Teams.findOne();
+        });
     });
   }
 
@@ -157,6 +165,14 @@ export class ProjectsBidComponent implements OnInit, OnDestroy {
     Students.update(this.student._id, {
       $set : {
         bids: this.projectBids
+      }
+    });
+
+    // make sure team database reflects the change
+
+    Teams.update(this.student.teamId, {
+      $set : {
+        
       }
     });
 
