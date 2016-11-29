@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 
@@ -12,22 +13,24 @@ import { Projects } from '../../../../both/collections/projects.collection';
 import { Project } from '../../../../both/models/project.model';
 
 import { ProjectBid } from '../../../../both/models/project-bid.model';
+import { ProjectRecBid } from '../../../../both/models/project-rec-bid.model';
 import { StudentBid } from '../../../../both/models/student-bid.model';
 
-import template from './team-home.component.html';
+import template from './team-recommendation.component.html';
 
 @Component({
-  selector: 'team-home',
+  selector: 'team-recommendation',
   template
 })
-export class TeamHomeComponent implements OnInit, OnDestroy {
+export class TeamRecComponent implements OnInit, OnDestroy {
   teamId: string;
   paramsSub: Subscription;
   team: Team;
   teamSub: Subscription;
-  teamBids: ProjectBid[] = [];
+  teamBids: ProjectRecBid[] = [];
   projectSub: Subscription;
   topProject: Project;
+  projects: Project[];
 
   constructor(private route: ActivatedRoute) {}
 
@@ -39,15 +42,14 @@ export class TeamHomeComponent implements OnInit, OnDestroy {
 
       this.teamSub = MeteorObservable.subscribe('team', this.teamId).subscribe(() => {
         this.team = Teams.findOne();
-        this.populateTeamBids();
+
 
         this.projectSub = MeteorObservable.subscribe('projects').subscribe(() => {
+          this.projects = Projects.find({}).fetch();
+          this.populateTeamBids();
           this.topProject = Projects.findOne(this.teamBids[0].projectId);
-          if (this.topProject) {
-            console.log("topProject exists...");
-          } else {
-            console.log("topProject does not exist...");
-          }
+
+
         });
       });
     });
@@ -66,14 +68,23 @@ export class TeamHomeComponent implements OnInit, OnDestroy {
           }
         }
         if (!found) {
-          var tempProjectBid: ProjectBid = {
+          var projectName: string;
+          for (var z = 0; z < this.projects.length; z++) {
+            if (this.projects[z]._id == tempProjectBids[j].projectId) {
+              projectName = this.projects[z].name;
+            }
+          }
+          var tempProjectBid: ProjectRecBid = {
             projectId: tempProjectBids[j].projectId,
-            bid: tempProjectBids[j].bid
+            bid: tempProjectBids[j].bid,
+            projectName: projectName
           }
           this.teamBids.push(tempProjectBid);
         }
       }
     }
+
+
   }
 
   ngOnDestroy() {

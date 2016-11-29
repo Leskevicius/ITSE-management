@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 // student stuff
 import { StudentHomeComponent } from './home/student/student-home.component';
 import { UpdateStudentProfileComponent } from './home/student/update-student-profile.component';
-
+import { StudenttDetailsComponent } from './home/student/student-details.component';
 
 // client stuff
 import { ClientHomeComponent } from './home/client/client-home.component';
@@ -28,6 +28,8 @@ import { TeamsCreateComponent } from './teams/teams-create.component';
 import { TeamsListComponent } from './teams/teams-list.component';
 import { TeamHomeComponent } from './teams/team-home.component';
 import { TeamsJoinComponent } from './teams/teams-join.component';
+import { TeamRecComponent } from './teams/team-recommendation.component';
+import { TeamMembersComponent } from './teams/team-members.component';
 
 
 
@@ -38,6 +40,7 @@ export const routes: Route[] = [
   { path: 'recover', component: RecoverComponent },
   { path: 'student', component: StudentHomeComponent, canActivate: ['canActivateForStudent']},
   { path: 'student/profile', component: UpdateStudentProfileComponent, canActivate: ['canActivateForStudent'] },
+  { path: 'student/:studentId', component: StudenttDetailsComponent, canActivate: ['canActivateForStudent']},
   { path: 'client', component: ClientHomeComponent, canActivate: ['canActivateForClient']},
   { path: 'client/projects', component: ProjectsClientListComponent, canActivate: ['canActivateForClient'] },
   { path: 'client/profile', component: UpdateClientProfileComponent, canActivate: ['canActivateForClient'] },
@@ -48,7 +51,9 @@ export const routes: Route[] = [
   { path: 'teams', component: TeamsListComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'teams/create', component: TeamsCreateComponent, canActivate: ['canActivateForStudent'] },
   { path: 'team/:teamId', component: TeamHomeComponent, canActivate: ['canActivateForLoggedIn'] },
-  { path: 'teams/join', component: TeamsJoinComponent, canActivate: ['canActivateForStudent'] }
+  { path: 'teams/join', component: TeamsJoinComponent, canActivate: ['canActivateForStudent'] },
+  { path: 'team/:teamId/recommendation', component: TeamRecComponent, canActivate: ['canActivateForStudent'] },
+  { path: 'team/:teamId/members', component: TeamMembersComponent, canActivate: ['canActivateForStudent'] }
 ];
 
 export const ROUTES_PROVIDERS = [{

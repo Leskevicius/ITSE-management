@@ -13,6 +13,7 @@ import { Student } from '../../../../both/models/student.model';
 
 import { Teams } from '../../../../both/collections/teams.collection';
 import { Team } from '../../../../both/models/Team.model';
+import { StudentBid } from '../../../../both/models/student-bid.model';
 
 import { ProjectBid } from '../../../../both/models/project-bid.model';
 
@@ -169,10 +170,27 @@ export class ProjectsBidComponent implements OnInit, OnDestroy {
     });
 
     // make sure team database reflects the change
+    var inDataBase: boolean = false;
+    var currentBid: ProjectBid[];
+    var studentBids: StudentBid[] = this.team.projectBids;
+    for (var i = 0; i < studentBids.length; i++) {
+      if (studentBids[i].studentId == this.student.studentId) {
+        studentBids[i].bids = this.projectBids;
+        inDataBase = true;
+      }
+    }
+
+    if (!inDataBase) {
+      var studentBid: StudentBid = {
+        studentId: this.student.studentId,
+        bids: this.projectBids
+      }
+      studentBids.push(studentBid);
+    }
 
     Teams.update(this.student.teamId, {
       $set : {
-        
+        projectBids: studentBids
       }
     });
 

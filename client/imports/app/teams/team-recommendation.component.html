@@ -1,0 +1,10 @@
+<div *ngIf="team">
+  <h1>{{team.name}} Recommendation</h1>
+</div>
+
+
+<div *ngIf="teamBids">
+  <div *ngFor="let teamBid of teamBids">
+    {{teamBid.projectName}} has {{teamBid.bid}}
+  </div>
+</div>
