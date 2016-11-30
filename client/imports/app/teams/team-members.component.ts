@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Meteor } from 'meteor/meteor';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
@@ -20,12 +21,13 @@ import template from './team-members.component.html';
   template
 })
 export class TeamMembersComponent implements OnInit, OnDestroy {
-  teamId: string;
   paramsSub: Subscription;
-  team: Team;
+  teamId: string;
   teamSub: Subscription;
-  students: Observable<Student[]>;
+  team: Team;
   studentSub: Subscription;
+  students: Observable<Student[]>;
+  student: Student;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -40,6 +42,9 @@ export class TeamMembersComponent implements OnInit, OnDestroy {
 
         this.studentSub = MeteorObservable.subscribe('students', this.teamId).subscribe(() => {
           this.students = Students.find({});
+          this.student = Students.findOne({
+            studentId : Meteor.userId()
+          });
         });
       });
     });

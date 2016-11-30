@@ -23,28 +23,28 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
+      username: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required]
+
     });
 
     this.error = '';
   }
 
   login() {
-    if (this.signupForm.valid) {
-      Meteor.loginWithPassword(this.signupForm.value.email, this.signupForm.value.password, () => {
-        if (this.accountType === 'pm') {
-          this.router.navigate(['student/'])
-        } else {
-          this.router.navigate([this.accountType + '/']);
-        }
-      });
-    }
+    Meteor.loginWithPassword(this.signupForm.value.email, this.signupForm.value.password, () => {
+      if (this.accountType === 'pm') {
+        this.router.navigate(['student/'])
+      } else {
+        this.router.navigate([this.accountType + '/']);
+      }
+    });
   }
 
   signup() {
     if (this.signupForm.valid) {
-      MeteorObservable.call('signup', this.signupForm.value.email, this.signupForm.value.password, this.accountType).subscribe(() => {
+      MeteorObservable.call('signup', this.signupForm.value.username, this.signupForm.value.email, this.signupForm.value.password, this.accountType).subscribe(() => {
         //success
         this.login();
         console.log('account created, logged in, redirected...');

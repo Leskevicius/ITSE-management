@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
 import { loadProjects } from './imports/fixtures/projects';
+import { loadAdmin } from './imports/fixtures/admin';
 
 //publishing collections
 import './imports/publications/projects';
@@ -16,4 +17,5 @@ import './imports/methods/roles.methods';
 //loads placeholder projects
 Meteor.startup(() => {
   loadProjects();
+  loadAdmin();
 });

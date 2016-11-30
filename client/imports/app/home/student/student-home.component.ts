@@ -33,14 +33,12 @@ export class StudentHomeComponent implements OnInit, OnDestroy {
         this.student = Students.findOne({studentId: Meteor.userId()});
 
         this.hasTeam = this.inTeam();
+        this.isPM = this.checkPremissions('pm', 'default-group');
         if (this.hasTeam) {
           this.teamId = this.student.teamId;
         }
       });
     });
-
-
-    this.isPM = this.checkPremissions('pm', 'default-group');
   }
 
   ngOnDestroy() {

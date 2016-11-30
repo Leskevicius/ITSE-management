@@ -13,6 +13,7 @@ import { AUTH_DECLARATIONS } from './auth';
 import { LANDING_DECLARATIONS } from './landing';
 import { STUDENT_HOME_DECLARATIONS } from './home/student';
 import { CLIENT_HOME_DECLARATIONS } from './home/client';
+import { ADMIN_HOME_DECLARATIONS } from './home/admin';
 import { PROJECTS_DECLARATIONS } from './projects';
 import { TEAMS_DECLARATIONS } from './teams';
 
@@ -55,6 +56,7 @@ import { DragulaModule } from 'ng2-dragula/ng2-dragula';
     LANDING_DECLARATIONS,
     STUDENT_HOME_DECLARATIONS,
     CLIENT_HOME_DECLARATIONS,
+    ADMIN_HOME_DECLARATIONS,
     PROJECTS_DECLARATIONS,
     TEAMS_DECLARATIONS
   ],

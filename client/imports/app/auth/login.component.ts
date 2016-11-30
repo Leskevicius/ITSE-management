@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required]
     });
 
@@ -27,13 +27,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      Meteor.loginWithPassword(this.loginForm.value.email, this.loginForm.value.password, (err) => {
+      Meteor.loginWithPassword(this.loginForm.value.username, this.loginForm.value.password, (err) => {
         if (err) {
           this.zone.run(() => {
             this.error = err;
           });
         } else {
-          // this.router.navigate(['home/student/']);
           this.reroute();
         }
       });
@@ -47,6 +46,8 @@ export class LoginComponent implements OnInit {
     } else if (this.checkPremissions('student', 'default-group') ||
                this.checkPremissions('pm', 'default-group')) {
       this.router.navigate(['student/']);
+    } else if (this.checkPremissions('admin', Roles.GLOBAL_GROUP)) {
+      this.router.navigate(['admin/']);
     } else {
       this.router.navigate(['']);
     }

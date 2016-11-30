@@ -9,6 +9,10 @@ import { StudenttDetailsComponent } from './home/student/student-details.compone
 import { ClientHomeComponent } from './home/client/client-home.component';
 import { UpdateClientProfileComponent } from './home/client/update-client-profile.component';
 
+// admin stuff
+import { AdminHomeComponent } from './home/admin/admin-home.component';
+
+
 // landing page @ account management stuff
 import { LandingPageComponent } from './landing/landing-page.component';
 import { LoginComponent } from './auth/login.component';
@@ -44,6 +48,7 @@ export const routes: Route[] = [
   { path: 'client', component: ClientHomeComponent, canActivate: ['canActivateForClient']},
   { path: 'client/projects', component: ProjectsClientListComponent, canActivate: ['canActivateForClient'] },
   { path: 'client/profile', component: UpdateClientProfileComponent, canActivate: ['canActivateForClient'] },
+  { path: 'admin', component: AdminHomeComponent, canActivate: ['canActivateForAdmin']},
   { path: 'projects', component: ProjectsListComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'project/:projectId', component: ProjectDetailsComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'projects/create', component: ProjectsFormComponent },

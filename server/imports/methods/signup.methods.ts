@@ -10,8 +10,9 @@ import { ProjectBid } from '../../../both/models/project-bid.model';
 
 
 Meteor.methods({
-  signup: function (passedEmail: string, passedPassword: string, accountType: string) {
+  signup: function (passedUsername: string, passedEmail: string, passedPassword: string, accountType: string) {
     this.id = Accounts.createUser({
+      username: passedUsername,
       email: passedEmail,
       password: passedPassword
     });
