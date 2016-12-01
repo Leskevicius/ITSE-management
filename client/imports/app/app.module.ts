@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
-// import { Roles } from 'meteor/alanning:roles';
 
 import { AppComponent } from './app.component';
 import { routes, ROUTES_PROVIDERS } from './app.routes';
@@ -17,15 +16,6 @@ import { ADMIN_HOME_DECLARATIONS } from './home/admin';
 import { PROJECTS_DECLARATIONS } from './projects';
 import { TEAMS_DECLARATIONS } from './teams';
 
-// Material stuff
-// import { MdButtonModule } from "@angular2-material/button";
-// import { MdToolbarModule } from "@angular2-material/toolbar";
-// import { MdInputModule } from "@angular2-material/input";
-// import { MdCardModule } from "@angular2-material/card";
-// import { MdCoreModule } from "@angular2-material/core";
-// import { MdCheckboxModule } from "@angular2-material/checkbox";
-// import { MdListModule } from "@angular2-material/list";
-// import { MdRadioModule } from "@angular2-material/radio";
 import { MaterialModule } from "@angular/material";
 
 import { DragulaModule } from 'ng2-dragula/ng2-dragula';
@@ -37,16 +27,6 @@ import { DragulaModule } from 'ng2-dragula/ng2-dragula';
     AccountsModule,
     FormsModule,
     ReactiveFormsModule,
-    // Roles,
-    // material stuff
-    // MdCoreModule.forRoot(),
-    // MdButtonModule.forRoot(),
-    // MdToolbarModule.forRoot(),
-    // MdInputModule.forRoot(),
-    // MdCardModule.forRoot(),
-    // MdCheckboxModule.forRoot(),
-    // MdListModule.forRoot(),
-    // MdRadioModule.forRoot(),
     MaterialModule.forRoot(),
     DragulaModule
   ],
@@ -60,7 +40,7 @@ import { DragulaModule } from 'ng2-dragula/ng2-dragula';
     CLIENT_HOME_DECLARATIONS,
     ADMIN_HOME_DECLARATIONS,
     PROJECTS_DECLARATIONS,
-    TEAMS_DECLARATIONS
+    TEAMS_DECLARATIONS,
   ],
   providers: [
     ...ROUTES_PROVIDERS

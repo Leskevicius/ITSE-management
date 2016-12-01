@@ -3,10 +3,11 @@ import { AdminClientListComponent } from './admin-client-list.component';
 import { AdminClientDetailsComponent } from './admin-client-details.component';
 import { AdminStudentListComponent } from './admin-student-list.component';
 import { AdminStudentDetailsComponent } from './admin-student-details.component';
-import { AdminTeamsListComponent } from './admin-teams-list.component'
-import { AdminTeamDetailsComponent } from './admin-team-details.component'
-import { AdminProjectsListComponent } from './admin-projects-list.component'
-import { AdminProjectDetailsComponent } from './admin-project-details.component'
+import { AdminTeamsListComponent } from './admin-teams-list.component';
+import { AdminTeamDetailsComponent } from './admin-team-details.component';
+import { AdminProjectsListComponent } from './admin-projects-list.component';
+import { AdminProjectDetailsComponent } from './admin-project-details.component';
+import { AdminTeamScoresComponent } from './admin-team-scores.component';
 
 export const ADMIN_HOME_DECLARATIONS = [
   AdminHomeComponent,
@@ -17,5 +18,6 @@ export const ADMIN_HOME_DECLARATIONS = [
   AdminTeamsListComponent,
   AdminTeamDetailsComponent,
   AdminProjectsListComponent,
-  AdminProjectDetailsComponent
+  AdminProjectDetailsComponent,
+  AdminTeamScoresComponent
 ];
