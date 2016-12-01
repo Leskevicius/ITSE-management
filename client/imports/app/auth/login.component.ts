@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['client/']);
     } else if (this.checkPremissions('student', 'default-group') ||
                this.checkPremissions('pm', 'default-group')) {
-      this.router.navigate(['student/']);
+      this.router.navigate(['/student/']);
     } else if (this.checkPremissions('admin', Roles.GLOBAL_GROUP)) {
       this.router.navigate(['admin/']);
     } else {

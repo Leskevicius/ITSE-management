@@ -80,19 +80,6 @@ export class ProjectsBidComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.projects = Projects.find({}).zone();
     this.projectsSub = MeteorObservable.subscribe('projects').subscribe();
-
-    // this.studentSub = MeteorObservable.subscribe('student', Meteor.userId()).subscribe(() => {
-    //   MeteorObservable.autorun().subscribe(() => {
-    //     this.student = Students.findOne({studentId: Meteor.userId()});
-    //     if (this.student) {
-    //       console.log("student found...");
-    //       // this.consistencyCheck();
-    //     }
-    //     else
-    //       console.log("student not found...");
-    //   });
-    // });
-
     this.studentSub = MeteorObservable.subscribe('student', Meteor.userId()).subscribe(() => {
 
         this.student = Students.findOne({studentId: Meteor.userId()});

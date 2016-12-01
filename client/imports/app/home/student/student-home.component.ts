@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { Meteor } from 'meteor/meteor';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -22,22 +22,25 @@ export class StudentHomeComponent implements OnInit, OnDestroy {
   studentSub: Subscription;
   teamId: string;
 
-  isPM: boolean;
-  hasTeam: boolean;
+  isPM: boolean = false;
+  hasTeam: boolean = false;;
 
-  constructor() {}
+  constructor(private zone: NgZone) {}
 
   ngOnInit() {
     this.studentSub = MeteorObservable.subscribe('student', Meteor.userId()).subscribe(() => {
-      MeteorObservable.autorun().subscribe(() => {
+      this.zone.run(() => {
+
         this.student = Students.findOne({studentId: Meteor.userId()});
 
         this.hasTeam = this.inTeam();
+
         this.isPM = this.checkPremissions('pm', 'default-group');
         if (this.hasTeam) {
           this.teamId = this.student.teamId;
         }
       });
+
     });
   }
 
@@ -52,9 +55,7 @@ export class StudentHomeComponent implements OnInit, OnDestroy {
   }
 
   inTeam(): boolean {
-    if (!this.student) {
-      return false;
-    } else if (this.student.teamId) {
+    if (this.student.teamId) {
       return true;
     } else return false;
   }

@@ -9,6 +9,9 @@ import { Teams } from '../../../../both/collections/teams.collection';
 import { Students } from '../../../../both/collections/students.collection';
 import { Student } from '../../../../both/models/student.model';
 
+import { ProjectBid } from '../../../../both/models/project-bid.model';
+import { StudentBid } from '../../../../both/models/student-bid.model'
+
 import template from './teams-create.component.html';
 
 @Component({
@@ -34,11 +37,16 @@ export class TeamsCreateComponent implements OnInit, OnDestroy {
 
   addTeam(): void {
     if (this.addForm.valid) {
+      var myNewBid: StudentBid = {
+        studentId: this.student.studentId,
+        bids: this.student.bids
+      }
+
       Teams.insert({
         name: this.addForm.value.name,
         owner: Meteor.userId(),
         memberId: [Meteor.userId()],
-        projectBids: []
+        projectBids: [myNewBid]
       });
       // must register students entry with team document id
       var id = Teams.findOne({owner: Meteor.userId()})._id;

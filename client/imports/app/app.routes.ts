@@ -11,7 +11,10 @@ import { UpdateClientProfileComponent } from './home/client/update-client-profil
 
 // admin stuff
 import { AdminHomeComponent } from './home/admin/admin-home.component';
-
+import { AdminClientListComponent } from './home/admin/admin-client-list.component';
+import { AdminClientDetailsComponent } from './home/admin/admin-client-details.component';
+import { AdminStudentListComponent } from './home/admin/admin-student-list.component';
+import { AdminStudentDetailsComponent } from './home/admin/admin-student-details.component';
 
 // landing page @ account management stuff
 import { LandingPageComponent } from './landing/landing-page.component';
@@ -49,6 +52,10 @@ export const routes: Route[] = [
   { path: 'client/projects', component: ProjectsClientListComponent, canActivate: ['canActivateForClient'] },
   { path: 'client/profile', component: UpdateClientProfileComponent, canActivate: ['canActivateForClient'] },
   { path: 'admin', component: AdminHomeComponent, canActivate: ['canActivateForAdmin']},
+  { path: 'admin/clients', component: AdminClientListComponent, canActivate: ['canActivateForAdmin']},
+  { path: 'admin/client/:clientId', component: AdminClientDetailsComponent, canActivate: ['canActivateForAdmin']},
+  { path: 'admin/students', component: AdminStudentListComponent, canActivate: ['canActivateForAdmin']},
+  { path: 'admin/student/:studentId', component: AdminStudentDetailsComponent, canActivate: ['canActivateForAdmin']},
   { path: 'projects', component: ProjectsListComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'project/:projectId', component: ProjectDetailsComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'projects/create', component: ProjectsFormComponent },

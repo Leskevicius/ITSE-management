@@ -13,6 +13,9 @@ import { Team } from '../../../../both/models/team.model';
 import { Students } from '../../../../both/collections/students.collection';
 import { Student } from '../../../../both/models/student.model';
 
+import { ProjectBid } from '../../../../both/models/project-bid.model';
+import { StudentBid } from '../../../../both/models/student-bid.model'
+
 import template from './teams-join.component.html';
 
 @Component({
@@ -51,13 +54,24 @@ export class TeamsJoinComponent implements OnInit, OnDestroy {
     });
 
     // register teamId as your team
+    // register your bids to the team
     var currentMembers: string[];
-    currentMembers = Teams.findOne(team._id).memberId;
+    var teamBids: StudentBid[] = team.projectBids;
+
+    currentMembers = team.memberId;
     currentMembers.push(this.student._id);
+
+    var myNewBid: StudentBid = {
+      studentId: this.student.studentId,
+      bids: this.student.bids
+    }
+
+    teamBids.push(myNewBid);
 
     Teams.update(team._id, {
       $set: {
-        memberId: currentMembers
+        memberId: currentMembers,
+        projectBids: teamBids
       }
     });
 

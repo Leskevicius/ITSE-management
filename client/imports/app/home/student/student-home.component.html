@@ -2,7 +2,7 @@
 
 <!-- <a md-button class="md-title" (click)="ownsTeam()">ownsTeam</a> -->
 
-<md-nav-list>
+<md-nav-list *ngIf="student">
   <a *ngIf="isPM && !hasTeam" md-list-item routerLink="/teams/create">Create Team</a>
   <a *ngIf="isPM && hasTeam" md-list-item routerLink="/teams/create">Manage Team</a>
   <a *ngIf="!isPM && !hasTeam" md-list-item routerLink="/teams/join">Join Team</a>

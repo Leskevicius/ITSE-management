@@ -1,0 +1,8 @@
+<h1>Team list</h1>
+<div>
+  <ul>
+    <li *ngFor="let team of teams | async">
+      <a [routerLink]="['/team', team._id]">{{team.name}}</a>
+    </li>
+  </ul>
+</div>
