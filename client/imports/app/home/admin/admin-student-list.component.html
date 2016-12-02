@@ -1,11 +1,14 @@
-<h1>Students</h1>
-
-<div *ngIf="students">
-  <div *ngFor="let student of students | async">
-      <a [routerLink]="['/admin/student', student._id]">
-        <md-card>
-          {{student.username}}
-        </md-card>
-      </a>
-  </div>
-</div>
+<md-card class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Students</md-toolbar>
+  <md-card-content>
+    <div *ngIf="students">
+      <div *ngFor="let student of students | async">
+          <a [routerLink]="['/admin/student', student._id]">
+            <md-card>
+              {{student.username}}
+            </md-card>
+          </a>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>

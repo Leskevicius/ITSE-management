@@ -2,7 +2,7 @@
   <md-toolbar color="primary" class="content-card-md-toolbar">{{team.name}} Homepage</md-toolbar>
   <md-card-content>
     {{topProject.name}} is top project choice
-    <md-nav-list *ngIf="student">
+    <md-nav-list>
       <a md-list-item [routerLink]="['/team', teamId, 'recommendation']">Team Recommendation</a>
       <a md-list-item [routerLink]="['/team', teamId, 'members']">Team Members</a>
     </md-nav-list>

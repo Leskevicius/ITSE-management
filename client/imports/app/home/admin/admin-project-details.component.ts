@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { Router } from '@angular/router';
+
 
 import 'rxjs/add/operator/map';
 
@@ -18,7 +20,7 @@ export class AdminProjectDetailsComponent implements OnInit, OnDestroy {
   paramsSub: Subscription;
   project: Project;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.paramsSub = this.route.params
@@ -33,5 +35,18 @@ export class AdminProjectDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.paramsSub.unsubscribe();
+  }
+
+  updateProject() {
+    Projects.update(this.project._id, {
+      $set: {
+        name: this.project.name,
+        description: this.project.description,
+        features : this.project.features,
+        contact : this.project.contact
+      }
+    });
+
+    this.router.navigate(['/admin/']);
   }
 }

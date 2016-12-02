@@ -2,3 +2,38 @@
 <header *ngIf="student">
   <p>{{student.studentId}}</p>
 </header>
+
+
+<md-card *ngIf="student" class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Student Details</md-toolbar>
+  <md-card-content>
+    <label>Username:</label>
+    <p>{{student.username}}</p>
+    <label>E-mail:</label>
+    <p>{{student.contact.email}}</p>
+    <label>Phone number:</label>
+    <p>{{student.contact.phone}}</p>
+  </md-card-content>
+</md-card>
+
+<!-- <md-card *ngIf="student" class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Student Details</md-toolbar>
+  <md-card-content>
+    <form (submit)="updateStudent()" layout="column" layout-fill layout-padding layout-margin>
+      <md-input name="username" class="demo-full-width" [(ngModel)]="student.username" placeholder="Username">
+      </md-input>
+      <div layout="row">
+        <md-input name="description" class="demo-full-width" [(ngModel)]="student.description" placeholder="Description"></md-input>
+      </div>
+      <div layout="row">
+        <md-input name="features"class="demo-full-width" [(ngModel)]="student.features" placeholder="Features"></md-input>
+      </div>
+      <div layout="row">
+        <md-input name="contact"class="demo-full-width" [(ngModel)]="student.contact" placeholder="Contact"></md-input>
+      </div>
+      <div layout="row" layout-align="space-between center">
+        <button md-raised-button class="md-primary" type="submit" aria-label="updateProject">Update</button>
+      </div>
+    </form>
+  </md-card-content>
+</md-card> -->
