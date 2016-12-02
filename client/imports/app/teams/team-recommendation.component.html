@@ -1,14 +1,13 @@
-<div *ngIf="team">
-  <h1>{{team.name}} Recommendation</h1>
-</div>
-
-<div *ngIf="teamBids">
-  <div *ngFor="let teamBid of teamBids">
-    <md-card>
-      {{teamBid.projectName}}
-      <p style="text-align: right">
-        {{teamBid.bid}}
-      </p>
-    </md-card>
-  </div>
-</div>
+<md-card *ngIf="teamBids" class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">{{team.name}} Recommendation</md-toolbar>
+  <md-card-content>
+    <div *ngFor="let teamBid of teamBids">
+      <md-card>
+        {{teamBid.projectName}}
+        <p style="text-align: right">
+          {{teamBid.bid}}
+        </p>
+      </md-card>
+    </div>
+  </md-card-content>
+</md-card>

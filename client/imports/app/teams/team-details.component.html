@@ -1,4 +1,10 @@
-<h1>Team Details</h1>
-<header *ngIf="team">
-  <h2>{{team.name}}</h2>
-</header>
+<md-card class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Team Details</md-toolbar>
+  <md-card-content>
+    <div *ngIf="team">
+      <label>Team name</label>
+      {{team.name}}
+      add team members
+    </div>
+  </md-card-content>
+</md-card>

@@ -1,4 +1,11 @@
-<h1>Student Details</h1>
-<header *ngIf="student">
-  <p>{{student.studentId}}</p>
-</header>
+<md-card *ngIf="student" class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Student Details</md-toolbar>
+  <md-card-content>
+    <label>Username</label>
+    {{student.username}}
+    <label>E-mail</label>
+    {{student.contact.email}}
+    <label>Phone number</label>
+    {{student.contact.phone}}
+  </md-card-content>
+</md-card>

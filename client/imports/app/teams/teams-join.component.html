@@ -1,9 +1,15 @@
-<h1>Join a Team</h1>
-<div>
-  <ul>
-    <li *ngFor="let team of teams | async">
-      <!-- <a [routerLink]="['/team', team._id]">{{team.name}}</a> -->
-      <p>{{team.name}}<span><a md-button class="md-title" (click)="joinTeam(team)">Join</a></span></p>
-    </li>
-  </ul>
-</div>
+<md-card class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Projects</md-toolbar>
+  <md-card-content>
+    <div *ngIf="teams">
+      <div *ngFor="let team of teams | async">
+        <md-card>
+          <div layout="row">
+            {{team.name}}
+            <a md-button class="md-title" (click)="joinTeam(team)">Join</a>
+          </div>
+        </md-card>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>

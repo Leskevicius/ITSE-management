@@ -1,18 +1,10 @@
-<div *ngIf="team">
-  <h1>{{team.name}} Homepage</h1>
-</div>
-
-<div *ngIf="topProject">
-  {{topProject.name}} is top project choice
-</div>
-<br>
-<md-nav-list>
-  <a md-list-item [routerLink]="['/team', teamId, 'recommendation']">Team Recommendation</a>
-  <a md-list-item [routerLink]="['/team', teamId, 'members']">Team Members</a>
-</md-nav-list>
-<!--
-<div *ngIf="teamBids">
-  <div *ngFor="let teamBid of teamBids">
-    {{teamBid.projectId}} has {{teamBid.bid}}
-  </div>
-</div> -->
+<md-card *ngIf="topProject"class="demo-card demo-basic content-card" style="width: 50%">
+  <md-toolbar color="primary" class="content-card-md-toolbar">{{team.name}} Homepage</md-toolbar>
+  <md-card-content>
+    {{topProject.name}} is top project choice
+    <md-nav-list *ngIf="student">
+      <a md-list-item [routerLink]="['/team', teamId, 'recommendation']">Team Recommendation</a>
+      <a md-list-item [routerLink]="['/team', teamId, 'members']">Team Members</a>
+    </md-nav-list>
+  </md-card-content>
+</md-card>

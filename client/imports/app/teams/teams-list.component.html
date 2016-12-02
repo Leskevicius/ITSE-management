@@ -1,8 +1,14 @@
-<h1>Team list</h1>
-<div>
-  <ul>
-    <li *ngFor="let team of teams | async">
-      <a [routerLink]="['/team', team._id]">{{team.name}}</a>
-    </li>
-  </ul>
-</div>
+<md-card class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Team List</md-toolbar>
+  <md-card-content>
+    <div *ngIf="teams">
+      <div *ngFor="let team of teams | async">
+          <a [routerLink]="['/team', team._id]">
+            <md-card>
+              {{team.name}}
+            </md-card>
+          </a>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
