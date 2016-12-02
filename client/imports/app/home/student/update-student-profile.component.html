@@ -1,35 +1,16 @@
-<div class="md-content" layout="row" layout-align="center start" layout-fill layout-margin>
-  <div layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
-    <!-- <md-toolbar class="md-primary" color="primary">
-      Create Team
-    </md-toolbar> -->
-    <h1>Student Profile</h1>
-
-    <div layout="column" layout-fill layout-margin layout-padding>
-      <form *ngIf="student" (submit)="updateStudent()"
-            layout="column" layout-fill layout-padding layout-margin>
-        <label>Email</label>
-        <div layout="row">
-          <md-input [(ngModel)]="student.contact.email" name="email"></md-input>
-        </div>
-        <label>Phone number</label>
-        <div layout="row">
-          <md-input [(ngModel)]="student.contact.phone" name="phone"></md-input>
-        </div>
-        <div layout="row" layout-align="space-between center">
-          <button md-raised-button class="md-primary" type="submit" aria-label="login">Update</button>
-        </div>
-      </form>
-
-      <!-- <div [hidden]="error == ''">
-        <md-toolbar class="md-warn" layout="row" layout-fill layout-padding layout-margin>
-          <p class="md-body-1">{{ error }}</p>
-        </md-toolbar>
-      </div> -->
-
-    </div>
-  </div>
-</div>
-
-<!-- <label>Party Name: </label>
-        <md-input [disabled]="!isOwner" [(ngModel)]="party.name" name="name"></md-input> -->
+<md-card *ngIf="student" class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Student Profile</md-toolbar>
+  <md-card-content>
+    <form (submit)="updateStudent()" layout="column" layout-fill layout-padding layout-margin>
+      <div layout="row">
+        <md-input name="phone" class="demo-full-width" [(ngModel)]="student.contact.phone" placeholder="Phone number"></md-input>
+      </div>
+      <div layout="row">
+        <md-input name="email"class="demo-full-width" [(ngModel)]="student.contact.email" placeholder="E-mail"></md-input>
+      </div>
+      <div layout="row" layout-align="space-between center">
+        <button md-raised-button class="md-primary" type="submit" aria-label="updateClient">Update</button>
+      </div>
+    </form>
+  </md-card-content>
+</md-card>

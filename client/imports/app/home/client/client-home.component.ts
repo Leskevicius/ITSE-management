@@ -11,11 +11,6 @@ import template from './client-home.component.html';
 export class ClientHomeComponent implements OnInit {
   amI: boolean = false;
 
-  checkIt() {
-    this.amI = Roles.userIsInRole(Meteor.userId(),
-                            ['client'], 'default-group');
-  }
-
   ngOnInit() {
 
   }

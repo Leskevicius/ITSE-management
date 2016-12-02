@@ -36,6 +36,8 @@ export class AdminClientDetailsComponent implements OnInit, OnDestroy {
       this.clientId = clientId;
       this.client = Clients.findOne(this.clientId);
 
+      console.log(this.client.projectId.length);
+
       this.projectsSub = MeteorObservable.subscribe('projects').subscribe(() => {
         this.projects = Projects.find().fetch();
       });

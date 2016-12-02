@@ -4,16 +4,16 @@
     <form [formGroup]="addForm" #f="ngForm" (ngSubmit)="addProject()"
           layout="column" layout-fill layout-padding layout-margin>
       <div layout="row">
-        <md-input formControlName="name" type="name" placeholder="Project name"></md-input>
+        <md-input formControlName="name" type="name" placeholder="Project name" class="demo-full-width"></md-input>
       </div>
       <div layout="row">
-        <md-input formControlName="description" type="description" placeholder="Project description"></md-input>
+        <md-input formControlName="description" type="description" placeholder="Project description" class="demo-full-width"></md-input>
       </div>
       <div layout="row">
-        <md-input formControlName="features" type="features" placeholder="Project features"></md-input>
+        <md-input formControlName="features" type="features" placeholder="Project features" class="demo-full-width"></md-input>
       </div>
       <div layout="row">
-        <md-input formControlName="contact" type="contact" placeholder="Project contact"></md-input>
+        <md-input formControlName="contact" type="contact" placeholder="Project contact" class="demo-full-width"></md-input>
       </div>
       <div layout="row" layout-align="space-between center">
         <button md-raised-button class="md-primary" type="submit" aria-label="login">Create</button>

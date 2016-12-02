@@ -23,6 +23,7 @@ Meteor.methods({
         username: passedUsername,
         clientId: this.id,
         contact: {email: '', phone: ''},
+        projectId: []
       });
       console.log('created Clients entry');
     }

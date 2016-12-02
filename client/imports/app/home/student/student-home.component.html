@@ -1,15 +1,14 @@
-<h1>Student Home</h1>
-
-<!-- <a md-button class="md-title" (click)="ownsTeam()">ownsTeam</a> -->
-
-<md-nav-list *ngIf="student">
-  <a *ngIf="isPM && !hasTeam" md-list-item routerLink="/teams/create">Create Team</a>
-  <a *ngIf="isPM && hasTeam" md-list-item routerLink="/teams/create">Manage Team</a>
-  <a *ngIf="!isPM && !hasTeam" md-list-item routerLink="/teams/join">Join Team</a>
-  <a md-list-item routerLink="/student/profile">Manage Profile</a>
-  <a md-list-item routerLink="/projects">Projects</a>
-  <a md-list-item routerLink="/projects/bid">Project Bidding</a>
-  <a *ngIf="hasTeam" md-list-item [routerLink]="['/team', teamId]">Team</a>
-</md-nav-list>
-
-<!-- <a [routerLink]="['/project', project._id]">{{project.name}}</a> -->
+<md-card class="demo-card demo-basic content-card" style="width: 50%">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Student Home</md-toolbar>
+  <md-card-content>
+    <md-nav-list *ngIf="student">
+      <a *ngIf="isPM && !hasTeam" md-list-item routerLink="/teams/create">Create Team</a>
+      <a *ngIf="isPM && hasTeam" md-list-item routerLink="/teams/create">Manage Team</a>
+      <a *ngIf="!isPM && !hasTeam" md-list-item routerLink="/teams/join">Join Team</a>
+      <a md-list-item routerLink="/student/profile">Manage Profile</a>
+      <a md-list-item routerLink="/projects">Projects</a>
+      <a md-list-item routerLink="/projects/bid">Project Bidding</a>
+      <a *ngIf="hasTeam" md-list-item [routerLink]="['/team', teamId]">Team</a>
+    </md-nav-list>
+  </md-card-content>
+</md-card>

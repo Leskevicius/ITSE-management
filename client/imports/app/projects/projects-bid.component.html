@@ -1,12 +1,15 @@
-
-<h1>Project Bidding</h1>
-<div *ngIf="projects" class="wrapper">
-  <div class="container" [dragula]='"first-bag"' [dragulaModel]="projectBids">
-    <div *ngFor="let item of projectBids">
-      <md-card>{{item.projectId | displayProjectName:projects}}</md-card>
+<md-card class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Project Bidding</md-toolbar>
+  <md-card-content>
+    <div *ngIf="projects" class="wrapper">
+      <div class="container" [dragula]='"first-bag"' [dragulaModel]="projectBids">
+        <div *ngFor="let item of projectBids">
+          <md-card>{{item.projectId | displayProjectName:projects}}</md-card>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-
-<a md-button class="md-title" (click)="saveBids()">Save</a>
+    <div layout="row" layout-align="space-between center">
+      <button md-raised-button class="md-primary" (click)="saveBids()" style="margin-top: 15px;">Save</button>
+    </div>
+  </md-card-content>
+</md-card>

@@ -1,36 +1,16 @@
-<md-card class="demo-card demo-basic content-card">
+<md-card *ngIf="client" class="demo-card demo-basic content-card">
   <md-toolbar color="primary" class="content-card-md-toolbar">Client Profile</md-toolbar>
   <md-card-content>
     <form (submit)="updateClient()" layout="column" layout-fill layout-padding layout-margin>
-            <!-- <table style="width: 100%" cellspacing="0"><tr>
-        <td><md-input placeholder="First name" style="width: 100%"></md-input></td>
-        <td><md-input placeholder="Long Last Name That Will Be Truncated" style="width: 100%"></md-input></td>
-      </tr></table> -->
-      <!-- <p> -->
       <div layout="row">
         <md-input name="phone" class="demo-full-width" [(ngModel)]="client.contact.phone" placeholder="Phone number"></md-input>
       </div>
       <div layout="row">
         <md-input name="email"class="demo-full-width" [(ngModel)]="client.contact.email" placeholder="E-mail"></md-input>
       </div>
-      <!-- </p> -->
-      <!-- <table style="width: 100%" cellspacing="0"><tr>
-        <td><md-input class="demo-full-width" placeholder="City"></md-input></td>
-        <td><md-input class="demo-full-width" placeholder="State"></md-input></td>
-        <td><md-input #postalCode class="demo-full-width" maxlength="5"
-                      placeholder="Postal Code"
-                      value="94043">
-          <md-hint align="end">2 / 5</md-hint>
-        </md-input></td>
-      </tr></table> -->
-
-
       <div layout="row" layout-align="space-between center">
         <button md-raised-button class="md-primary" type="submit" aria-label="updateClient">Update</button>
       </div>
     </form>
   </md-card-content>
 </md-card>
-
-<!-- <label>Party Name: </label>
-        <md-input [disabled]="!isOwner" [(ngModel)]="party.name" name="name"></md-input> -->

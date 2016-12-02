@@ -41,7 +41,7 @@ contact?: Contact; -->
  </div> -->
 
 
-<md-card class="demo-card demo-basic content-card">
+<md-card *ngIf="client" class="demo-card demo-basic content-card">
   <md-toolbar color="primary" class="content-card-md-toolbar">Client Details</md-toolbar>
   <md-card-content>
     <form (submit)="updateClient()" layout="column" layout-fill layout-padding layout-margin>
@@ -69,11 +69,11 @@ contact?: Contact; -->
           <md-hint align="end">2 / 5</md-hint>
         </md-input></td>
       </tr></table> -->
-      <md-toolbar class="md-secondary" color="secondary">
+      <md-toolbar *ngIf="client.projectId.length !== 0" class="md-secondary" color="secondary" style="margin-top: 15px">
         Client Projects
       </md-toolbar>
 
-      <div layout="row" *ngFor="let pid of client.projectId">
+      <div style="margin-bottom: 15px" layout="row" *ngFor="let pid of client.projectId">
         <a [routerLink]="['/admin/project', pid]">
           <md-card>
             {{pid | displayProjectName:projects}}
