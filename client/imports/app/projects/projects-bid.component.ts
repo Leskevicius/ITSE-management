@@ -26,7 +26,7 @@ import style from './projects-bid.component.scss';
  styles: [style]
 })
 export class ProjectsBidComponent implements OnInit, OnDestroy {
-  projects: Observable<Project[]>;
+  projects: Project[];
   projectsSub: Subscription;
   student: Student;
   studentSub: Subscription;
@@ -78,8 +78,9 @@ export class ProjectsBidComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.projects = Projects.find({}).zone();
-    this.projectsSub = MeteorObservable.subscribe('projects').subscribe();
+    this.projectsSub = MeteorObservable.subscribe('projects').subscribe(() => {
+      this.projects = Projects.find({}).fetch();
+    });
     this.studentSub = MeteorObservable.subscribe('student', Meteor.userId()).subscribe(() => {
 
         this.student = Students.findOne({studentId: Meteor.userId()});

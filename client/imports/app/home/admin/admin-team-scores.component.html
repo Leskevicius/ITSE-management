@@ -1,1 +1,18 @@
 <h1>Team - Scores</h1>
+
+<div *ngIf="projectBidMapping">
+<md-grid-list cols="{{tableCols}}">
+  <md-grid-tile>
+    <div class="md-content" layout="row">
+      <md-card>Team Name</md-card>
+      <md-card layout="row" *ngFor="let team of teams">{{team.name}}</md-card>
+    </div>
+  </md-grid-tile>
+  <md-grid-tile *ngFor="let item of projectBidMapping">
+    <div class="md-content" layout="row">
+      <md-card>{{item.projectId | displayProjectName:projects}}</md-card>
+      <md-card layout="row" *ngFor="let bid of item.bids">{{bid}}</md-card>
+    </div>
+  </md-grid-tile>
+</md-grid-list>
+</div>

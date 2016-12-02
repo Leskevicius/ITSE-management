@@ -2,9 +2,13 @@
   <h1>{{team.name}} Recommendation</h1>
 </div>
 
-
 <div *ngIf="teamBids">
   <div *ngFor="let teamBid of teamBids">
-    {{teamBid.projectName}} has {{teamBid.bid}}
+    <md-card>
+      {{teamBid.projectName}}
+      <p style="text-align: right">
+        {{teamBid.bid}}
+      </p>
+    </md-card>
   </div>
 </div>

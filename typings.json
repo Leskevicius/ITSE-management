@@ -6,6 +6,7 @@
   },
   "globalDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
+    "jquery": "registry:dt/jquery#1.10.0+20160929162922",
     "meteor": "github:meteor-typings/meteor/1.3#955b89a4e2af892d1736bc570b490a97e860d5b7",
     "meteor-roles": "registry:dt/meteor-roles#1.2.14+20160317120654",
     "node": "registry:env/node#6.0.0+20161019193037",

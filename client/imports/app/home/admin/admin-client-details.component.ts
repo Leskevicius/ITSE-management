@@ -32,4 +32,8 @@ export class AdminClientDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.paramsSub.unsubscribe();
   }
+
+  updateClient() {
+
+  }
 }

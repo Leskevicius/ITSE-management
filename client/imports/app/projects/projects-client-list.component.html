@@ -1,7 +1,10 @@
-<div>
-  <ul>
-    <li *ngFor="let project of projects | async">
-      <a [routerLink]="['/project', project._id]">{{project.name}}</a>
-    </li>
-  </ul>
+<h1>Projects</h1>
+<div *ngIf="projects">
+  <div *ngFor="let project of projects | async">
+      <a [routerLink]="['/admin/project', project._id]">
+        <md-card>
+          {{project.name}}
+        </md-card>
+      </a>
+  </div>
 </div>

@@ -3,8 +3,8 @@
 <div *ngIf="clients">
   <div *ngFor="let client of clients | async">
       <a [routerLink]="['/admin/client', client._id]">
-        <md-card>
-          {{client.clientId}}
+        <md-card style="width: 50%;">
+          {{client.username}}
         </md-card>
       </a>
   </div>

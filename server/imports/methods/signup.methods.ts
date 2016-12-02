@@ -20,6 +20,7 @@ Meteor.methods({
     console.log(this.id);
     if (accountType === 'client') {
       Clients.insert({
+        username: passedUsername,
         clientId: this.id,
         contact: {email: '', phone: ''},
       });
@@ -42,6 +43,7 @@ Meteor.methods({
       }
 
       Students.insert({
+        username: passedUsername,
         studentId: this.id,
         contact: {email: '', phone: ''},
         bids: bidArray

@@ -4,7 +4,7 @@
   <div *ngFor="let student of students | async">
       <a [routerLink]="['/student', student._id]">
         <md-card>
-          {{student.studentId}}
+          {{student.username}}
         </md-card>
       </a>
   </div>

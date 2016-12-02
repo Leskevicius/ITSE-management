@@ -1,4 +1,112 @@
-<h1>Client Details</h1>
+<!-- <h1>Client Details</h1>
 <header *ngIf="client">
   <p>{{client.clientId}}</p>
-</header>
+</header> -->
+
+
+<!-- username: string;
+clientId: string;
+projectId?: string[];
+contact?: Contact; -->
+
+
+<!-- <div class="md-content" layout="row" layout-align="center start" layout-fill layout-margin>
+  <div layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
+    <md-toolbar class="md-secondary" color="secondary">
+      Client Details
+    </md-toolbar>
+
+    <div layout="column" layout-fill layout-margin layout-padding>
+      <div layout="row" layout-fill layout-margin>
+        <p class="md-body-2"> Sign in with your username</p>
+      </div>
+
+      <div layout="column" layout-fill layout-margin layout-padding>
+        <form *ngIf="client" (submit)="updateClient()"
+              layout="column" layout-fill layout-padding layout-margin>
+          <div layout="row">
+            <md-input [(ngModel)]="client.username" placeholder="Username" name="bla"></md-input>
+          </div>
+          <div layout="row">
+            <md-input [(ngModel)]="client.contact.phone" name="phone"></md-input>
+          </div>
+          <div layout="row" layout-align="space-between center">
+            <button md-raised-button class="md-primary" type="submit" aria-label="login">Update</button>
+          </div>
+        </form>
+
+      <md-divider></md-divider>
+    </div>
+  </div>
+ </div> -->
+
+
+<md-card class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Client Details</md-toolbar>
+  <md-card-content>
+    <form>
+      <md-input name="name" class="demo-full-width" [(ngModel)]="client.username" placeholder="Username (disabled)" disabled value="{{client.username}}">
+      </md-input>
+
+      <!-- <table style="width: 100%" cellspacing="0"><tr>
+        <td><md-input placeholder="First name" style="width: 100%"></md-input></td>
+        <td><md-input placeholder="Long Last Name That Will Be Truncated" style="width: 100%"></md-input></td>
+      </tr></table> -->
+      <!-- <p> -->
+      <div layout="row">
+        <md-input name="phone" class="demo-full-width" [(ngModel)]="client.contact.phone" placeholder="Phone number"></md-input>
+      </div>
+      <div layout="row">
+        <md-input name="email"class="demo-full-width" [(ngModel)]="client.contact.email" placeholder="E-mail"></md-input>
+      </div>
+      <!-- </p> -->
+      <table style="width: 100%" cellspacing="0"><tr>
+        <td><md-input class="demo-full-width" placeholder="City"></md-input></td>
+        <td><md-input class="demo-full-width" placeholder="State"></md-input></td>
+        <td><md-input #postalCode class="demo-full-width" maxlength="5"
+                      placeholder="Postal Code"
+                      value="94043">
+          <md-hint align="end">2 / 5</md-hint>
+        </md-input></td>
+      </tr></table>
+    </form>
+  </md-card-content>
+</md-card>
+
+<!-- <div class="md-content" layout="row" layout-align="center start" layout-fill layout-margin>
+  <div layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
+    <md-toolbar class="md-primary" color="primary">
+      Sign in
+    </md-toolbar>
+
+    <div layout="column" layout-fill layout-margin layout-padding>
+      <div layout="row" layout-fill layout-margin>
+        <p class="md-body-2"> Sign in with your username</p>
+      </div>
+
+      <form [formGroup]="loginForm" #f="ngForm" (ngSubmit)="login()"
+            layout="column" layout-fill layout-padding layout-margin>
+
+        <md-input formControlName="username" type="username" placeholder="Username"></md-input>
+        <md-input formControlName="password" type="password" placeholder="Password"></md-input>
+
+        <div layout="row" layout-align="space-between center">
+          <a md-button [routerLink]="['/recover']">Forgot password?</a>
+          <button md-raised-button class="md-primary" type="submit" aria-label="login">Sign In</button>
+        </div>
+      </form>
+
+      <div [hidden]="error == ''">
+        <md-toolbar class="md-warn" layout="row" layout-fill layout-padding layout-margin>
+          <p class="md-body-1">{{ error }}</p>
+        </md-toolbar>
+      </div>
+
+      <md-divider></md-divider>
+
+      <div layout="row" layout-align="center">
+        <a md-button [routerLink]="['/signup']">Need an account?</a>
+      </div>
+    </div>
+  </div>
+</div> -->

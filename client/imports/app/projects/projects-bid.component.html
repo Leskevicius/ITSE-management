@@ -1,28 +1,12 @@
 
 <h1>Project Bidding</h1>
-<div class="wrapper">
+<div *ngIf="projects" class="wrapper">
   <div class="container" [dragula]='"first-bag"' [dragulaModel]="projectBids">
     <div *ngFor="let item of projectBids">
-      <button md-raised-button class="md-primary">{{item.projectId}}</button>
+      <md-card>{{item.projectId | displayProjectName:projects}}</md-card>
     </div>
-    <!-- <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div> -->
   </div>
 </div>
 
-<!-- <div >
-  <div [dragula]='"first-bag"'>
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-  </div>
-  <div class='container' [dragula]='"first-bag"'>
-    <div>This is the default use case. You only need to specify the containers you want to use</div>
-    <div>More interactive use cases lie ahead</div>
-    <div>Make sure to check out the <a href='https://github.com/bevacqua/dragula#readme'>documentation on GitHub!</a></div>
-  </div>
-</div> -->
 
 <a md-button class="md-title" (click)="saveBids()">Save</a>

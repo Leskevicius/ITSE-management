@@ -4,8 +4,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 import 'rxjs/add/operator/map';
 
-import { Projects } from '../../../../both/collections/projects.collection';
-import { Project } from '../../../../both/models/project.model';
+import { Teams } from '../../../../both/collections/teams.collection';
+import { Team } from '../../../../both/models/team.model';
 
 import template from './team-details.component.html';
 
@@ -14,19 +14,19 @@ import template from './team-details.component.html';
   template
 })
 export class TeamDetailsComponent implements OnInit, OnDestroy {
-  projectId: string;
+  teamId: string;
   paramsSub: Subscription;
-  project: Project;
+  team: Team;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.paramsSub = this.route.params
-    .map(params => params['projectId'])
-    .subscribe(projectId => {
-      this.projectId = projectId;
+    .map(params => params['teamId'])
+    .subscribe(teamId => {
+      this.teamId = teamId;
 
-      this.project = Projects.findOne(this.projectId);
+      this.team = Teams.findOne(this.teamId);
     });
   }
 
