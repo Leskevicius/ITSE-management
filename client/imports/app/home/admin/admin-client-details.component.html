@@ -44,7 +44,7 @@ contact?: Contact; -->
 <md-card class="demo-card demo-basic content-card">
   <md-toolbar color="primary" class="content-card-md-toolbar">Client Details</md-toolbar>
   <md-card-content>
-    <form>
+    <form (submit)="updateClient()" layout="column" layout-fill layout-padding layout-margin>
       <md-input name="name" class="demo-full-width" [(ngModel)]="client.username" placeholder="Username (disabled)" disabled value="{{client.username}}">
       </md-input>
 
@@ -60,7 +60,7 @@ contact?: Contact; -->
         <md-input name="email"class="demo-full-width" [(ngModel)]="client.contact.email" placeholder="E-mail"></md-input>
       </div>
       <!-- </p> -->
-      <table style="width: 100%" cellspacing="0"><tr>
+      <!-- <table style="width: 100%" cellspacing="0"><tr>
         <td><md-input class="demo-full-width" placeholder="City"></md-input></td>
         <td><md-input class="demo-full-width" placeholder="State"></md-input></td>
         <td><md-input #postalCode class="demo-full-width" maxlength="5"
@@ -68,7 +68,22 @@ contact?: Contact; -->
                       value="94043">
           <md-hint align="end">2 / 5</md-hint>
         </md-input></td>
-      </tr></table>
+      </tr></table> -->
+      <md-toolbar class="md-secondary" color="secondary">
+        Client Projects
+      </md-toolbar>
+
+      <div layout="row" *ngFor="let pid of client.projectId">
+        <a [routerLink]="['/admin/project', pid]">
+          <md-card>
+            {{pid | displayProjectName:projects}}
+          </md-card>
+        </a>
+      </div>
+
+      <div layout="row" layout-align="space-between center">
+        <button md-raised-button class="md-primary" type="submit" aria-label="updateClient">Update</button>
+      </div>
     </form>
   </md-card-content>
 </md-card>
