@@ -18,11 +18,38 @@
       </md-grid-tile>
       <md-grid-tile *ngFor="let item of projectBidMap">
         <div class="md-content" layout="row">
-          <div>{{item.projectId | displayProjectName:projects}}</div>
+          <div>{{item.projectId | displayProjectName:projects | limitStringBy:20}}</div>
           <div layout="row" *ngFor="let bid of item.bids">{{bid}}</div>
         </div>
       </md-grid-tile>
     </md-grid-list>
     </div>
+  </md-card-content>
+</md-card>
+
+<md-card *ngIf="projectAssignment" class="demo-card demo-basic content-card" style="width: 90%">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Project Assignments</md-toolbar>
+  <md-card-content>
+    <md-grid-list cols="3" *ngFor="let team of teams" rowHeight="80px">
+      <md-grid-tile>
+        <h3 md-line>{{team.name}}</h3>
+      </md-grid-tile>
+      <md-grid-tile>
+        <button md-icon-button [md-menu-trigger-for]="menu" style="display: block; margin: 0 auto;">
+        <md-icon>more_vert</md-icon>
+        </button>
+
+        <md-menu #menu="mdMenu">
+          <button md-menu-item [disabled]="pa.available === false" *ngFor="let pa of projectAssignment" (click)="registerProjectAssignment(team, pa)">{{pa.projectName}}</button>
+        </md-menu>
+      </md-grid-tile>
+      <md-grid-tile *ngIf="team.projectId">
+        {{team.projectId | displayProjectName:projects}}
+        <button md-mini-fab (click)="removeFromAssignment(team)" >
+          <md-icon class="md-15">clear</md-icon>
+        </button>
+      </md-grid-tile>
+    </md-grid-list>
+    <button md-raised-button class="md-primary" aria-label="saveProjectAssignment" (click)="saveProjectAssignment()" style="margin-top:15px;">Save</button>
   </md-card-content>
 </md-card>

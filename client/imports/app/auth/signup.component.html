@@ -1,17 +1,18 @@
-<div class="md-content" layout="row" layout-align="center start" layout-fill layout-margin>
-  <div layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
-    <md-toolbar class="md-primary" color="primary">
-      Sign up
-    </md-toolbar>
-
+<md-card class="demo-card demo-basic content-card" style="width: 50%">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Sign up</md-toolbar>
+  <md-card-content>
     <div layout="column" layout-fill layout-margin layout-padding>
       <form [formGroup]="signupForm" #f="ngForm" (ngSubmit)="signup()"
             layout="column" layout-fill layout-padding layout-margin>
-
-        <md-input formControlName="username" type="username" placeholder="username"></md-input>
-        <md-input formControlName="email" type="email" placeholder="Email"></md-input>
-        <md-input formControlName="password" type="password" placeholder="Password"></md-input>
-
+        <div layout="row">
+          <md-input formControlName="username" type="username" placeholder="username"></md-input>
+        </div>
+        <div layout="row">
+          <md-input formControlName="email" type="email" placeholder="Email"></md-input>
+        <div>
+        <div layout="row">
+          <md-input formControlName="password" type="password" placeholder="Password"></md-input>
+        </div>
         <md-radio-group [(ngModel)]="accountType" [ngModelOptions]="{standalone: true}">
           <div layout="row" layout-align="space-between center">
           <md-radio-button value="client">Client</md-radio-button>
@@ -24,22 +25,18 @@
           </div>
         </md-radio-group>
 
-        <div layout="row" layout-align="space-between center">
+        <div layout="row" layout-align="space-between center" style="margin-top:15px;">
           <button md-raised-button class="md-primary" type="submit" aria-label="login">Sign Up</button>
         </div>
       </form>
-
+      <div layout="row" layout-align="space-between center" style="margin-top: 15px;">
+        <a md-button [routerLink]="['/login']">Already a user?</a>
+      </div>
       <div [hidden]="error == ''">
         <md-toolbar class="md-warn" layout="row" layout-fill layout-padding layout-margin>
           <p class="md-body-1">{{ error }}</p>
         </md-toolbar>
       </div>
-
-      <md-divider></md-divider>
-
-      <div layout="row" layout-align="center">
-        <a md-button [routerLink]="['/login']">Already a user?</a>
-      </div>
     </div>
-  </div>
-</div>
+  </md-card-content>
+</md-card>

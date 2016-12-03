@@ -30,6 +30,8 @@ export class AdminTeamScoresComponent implements AfterViewInit, OnInit, OnDestro
   tableCols : number;
   currPage: number = 0;
   currStep: number = 3;
+  testbool: boolean = false;
+  projectAssignment: any[];
 
   ngAfterViewInit() {
 
@@ -43,6 +45,7 @@ export class AdminTeamScoresComponent implements AfterViewInit, OnInit, OnDestro
         this.tableCols = this.projects.length + 1;
         this.populateMap();
         this.projectBidMap = this.getMappingFor(this.projectBidMapping, this.currPage, this.currStep);
+        this.populateProjectAssignment();
       });
     });
   }
@@ -118,8 +121,8 @@ export class AdminTeamScoresComponent implements AfterViewInit, OnInit, OnDestro
   }
 
   next() {
-    if (this.currPage >= (this.projects.length / this.currStep)) {
-      this.currPage = (this.projects.length / this.currStep);
+    if (this.currPage >= Math.floor((this.projects.length / this.currStep))) {
+      this.currPage = Math.floor((this.projects.length / this.currStep));
     } else {
       this.currPage++;
       this.projectBidMap = this.getMappingFor(this.projectBidMapping, this.currPage, this.currStep);
@@ -150,5 +153,49 @@ export class AdminTeamScoresComponent implements AfterViewInit, OnInit, OnDestro
       }
     }
     return teamBids;
+  }
+
+  populateProjectAssignment() {
+    var tempPA: any[] = [];
+    for ( var i = 0; i < this.projects.length; i++) {
+      var available: boolean = true;
+      for ( var j = 0; j < this.teams.length; j++) {
+        if (this.teams[j].projectId === this.projects[i]._id) {
+          available = false;
+        }
+      }
+      tempPA.push({
+        projectId: this.projects[i]._id,
+        projectName: this.projects[i].name,
+        available: available
+      });
+    }
+    this.projectAssignment = tempPA;
+  }
+
+  saveProjectAssignment() {
+
+  }
+
+  removeFromAssignment(team: Team) {
+    console.log("removing teams assignment...");
+    for ( var i = 0; i < this.projectAssignment.length; i++) {
+      if (this.projectAssignment[i].projectId === team.projectId) {
+        console.log("found projectAssignment position..")
+        this.projectAssignment[i].available = true;
+      }
+    }
+    team.projectId = "";
+  }
+
+  registerProjectAssignment(team: Team, pa: any) {
+    console.log("clicked on ", pa.projectName);
+    team.projectId = pa.projectId;
+    pa.available = false;
+    // for (var i = 0; i < this.projectAssignment.length; i++) {
+    //   if (this.projectAssignment[i].projectId === pa.projectId) {
+    //     this.projectAssignment[i].available = false;
+    //   }
+    // }
   }
 }
