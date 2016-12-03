@@ -26,7 +26,10 @@ export class AdminTeamScoresComponent implements AfterViewInit, OnInit, OnDestro
   projects: Project[];
   projectsSub: Subscription;
   projectBidMapping: any[];
+  projectBidMap: any[];
   tableCols : number;
+  currPage: number = 0;
+  currStep: number = 3;
 
   ngAfterViewInit() {
 
@@ -39,6 +42,7 @@ export class AdminTeamScoresComponent implements AfterViewInit, OnInit, OnDestro
         this.projects = Projects.find().fetch();
         this.tableCols = this.projects.length + 1;
         this.populateMap();
+        this.projectBidMap = this.getMappingFor(this.projectBidMapping, this.currPage, this.currStep);
       });
     });
   }
@@ -75,6 +79,52 @@ export class AdminTeamScoresComponent implements AfterViewInit, OnInit, OnDestro
       });
     }
     this.projectBidMapping = allTeamBids;
+  }
+
+  getMappingFor(map: any[], page: number, step: number): any[] {
+    var newMap: any[] = [];
+    var mapSize: number = map.length;
+    var mapDepth: number;
+    if (mapSize > 0) {
+      mapDepth = map[0].bids.length;
+    } else {
+      return [];
+    }
+
+    if (page * step + step > mapSize) {
+      for (var i = mapSize - step; i < mapSize; i++) {
+        newMap.push(map[i]);
+      }
+    } else if (page * step < 0) {
+      for (var i = 0; i < step; i++) {
+        newMap.push(map[i]);
+      }
+    } else {
+      for (var i = page * step; i < page * step + step; i++) {
+        newMap.push(map[i]);
+      }
+    }
+    return newMap;
+  }
+
+  prev() {
+    if (this.currPage <= 0) {
+      this.currPage = 0;
+    } else {
+      this.currPage--;
+      this.projectBidMap = this.getMappingFor(this.projectBidMapping, this.currPage, this.currStep);
+    }
+    console.log(this.currPage);
+  }
+
+  next() {
+    if (this.currPage >= (this.projects.length / this.currStep)) {
+      this.currPage = (this.projects.length / this.currStep);
+    } else {
+      this.currPage++;
+      this.projectBidMap = this.getMappingFor(this.projectBidMapping, this.currPage, this.currStep);
+    }
+    console.log(this.currPage);
   }
 
   populateTeamBids(indexInTeam: number): ProjectBid[] {

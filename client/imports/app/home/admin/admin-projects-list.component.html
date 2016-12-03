@@ -1,10 +1,14 @@
-<h1>Projects</h1>
-<div *ngIf="projects">
-  <div *ngFor="let project of projects | async">
-      <a [routerLink]="['/admin/project', project._id]">
-        <md-card>
-          {{project.name}}
-        </md-card>
-      </a>
-  </div>
-</div>
+<md-card class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Projects</md-toolbar>
+  <md-card-content>
+    <div *ngIf="projects">
+      <div *ngFor="let project of projects | async">
+          <a [routerLink]="['/admin/project', project._id]">
+            <md-card>
+              {{project.name}}
+            </md-card>
+          </a>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>

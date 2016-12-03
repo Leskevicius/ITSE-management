@@ -1,18 +1,28 @@
-<h1>Team - Scores</h1>
-
-<div *ngIf="projectBidMapping">
-<md-grid-list cols="{{tableCols}}">
-  <md-grid-tile>
-    <div class="md-content" layout="row">
-      <md-card>Team Name</md-card>
-      <md-card layout="row" *ngFor="let team of teams">{{team.name}}</md-card>
+<md-card class="demo-card demo-basic content-card" style="width: 90%" *ngIf="projectBidMapping">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Team - Scores</md-toolbar>
+  <md-card-content>
+    <div style="margin: auto; width: 100px;">
+    <button md-mini-fab (click)="prev()" >
+      <md-icon class="md-15">keyboard_arrow_left</md-icon>
+    </button>
+    <button md-mini-fab (click)="next()" >
+      <md-icon class="md-24">keyboard_arrow_right</md-icon>
+    </button>
     </div>
-  </md-grid-tile>
-  <md-grid-tile *ngFor="let item of projectBidMapping">
-    <div class="md-content" layout="row">
-      <md-card>{{item.projectId | displayProjectName:projects}}</md-card>
-      <md-card layout="row" *ngFor="let bid of item.bids">{{bid}}</md-card>
+    <md-grid-list cols="4">
+      <md-grid-tile>
+        <div class="md-content" layout="row">
+          <div>Team Name</div>
+          <div layout="row" *ngFor="let team of teams">{{team.name}}</div>
+        </div>
+      </md-grid-tile>
+      <md-grid-tile *ngFor="let item of projectBidMap">
+        <div class="md-content" layout="row">
+          <div>{{item.projectId | displayProjectName:projects}}</div>
+          <div layout="row" *ngFor="let bid of item.bids">{{bid}}</div>
+        </div>
+      </md-grid-tile>
+    </md-grid-list>
     </div>
-  </md-grid-tile>
-</md-grid-list>
-</div>
+  </md-card-content>
+</md-card>
