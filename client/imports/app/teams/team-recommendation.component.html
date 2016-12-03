@@ -1,13 +1,23 @@
 <md-card *ngIf="team" class="demo-card demo-basic content-card">
   <md-toolbar color="primary" class="content-card-md-toolbar">{{team.name}} Recommendation</md-toolbar>
   <md-card-content>
+    <div *ngIf="this.isPM === true" style="margin-bottom:15px;">
+      You have [{{team.extraBids}}] extra bids left.
+    </div>
     <div *ngFor="let teamBid of teamBids">
       <md-card>
+        <button md-mini-fab (click)="addBid(teamBid)" style="margin-right:15px;" *ngIf="this.isPM === true">
+          <md-icon class="md-1">add</md-icon>
+        </button>
         {{teamBid.projectName}}
         <p style="text-align: right">
           {{teamBid.bid}}
         </p>
+
       </md-card>
+    </div>
+    <div *ngIf="this.isPM === true">
+      <button md-raised-button class="md-primary" style="margin-top:15px;" (click)="saveBids()">Save</button>
     </div>
   </md-card-content>
 </md-card>

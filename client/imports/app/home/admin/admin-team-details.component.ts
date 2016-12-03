@@ -78,6 +78,15 @@ export class AdminTeamDetailsComponent implements OnInit, OnDestroy {
         }
       }
     }
+
+    for ( var i = 0; i < this.team.extraProjectBids.length; i++) {
+      for ( var j = 0; j < this.teamBids.length; j++) {
+        if (this.team.extraProjectBids[i].projectId === this.teamBids[j].projectId) {
+          this.teamBids[j].bid = this.team.extraProjectBids[i].bid;
+        }
+      }
+    }
+    
     this.teamBids.sort(function(a,b) {
       if (a.bid < b.bid) {
         return 1

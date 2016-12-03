@@ -1,0 +1,15 @@
+<md-card class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Additional Team Bids</md-toolbar>
+  <md-card-content *ngIf="teams">
+      <md-grid-list cols="2" *ngFor="let team of teams" rowHeight="80px">
+        <md-grid-tile>
+          <h3 md-line>{{team.name}}</h3>
+        </md-grid-tile>
+        <md-grid-tile>
+          <md-input name="extraBids" class="demo-full-width" [(ngModel)]="team.extraBids" placeholder="Extra Bids"></md-input>
+        </md-grid-tile>
+      </md-grid-list>
+    </div>
+    <button md-raised-button class="md-primary" style="margin-top:15px;" (click)="saveBids()">Save</button>
+  </md-card-content>
+</md-card>

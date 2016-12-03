@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
+import { Router } from '@angular/router';
+
 
 import { Teams } from '../../../../../both/collections/teams.collection';
 import { Team } from '../../../../../both/models/team.model';
@@ -32,6 +34,8 @@ export class AdminTeamScoresComponent implements AfterViewInit, OnInit, OnDestro
   currStep: number = 3;
   testbool: boolean = false;
   projectAssignment: any[];
+
+  constructor(private router: Router) {}
 
   ngAfterViewInit() {
 
@@ -152,6 +156,14 @@ export class AdminTeamScoresComponent implements AfterViewInit, OnInit, OnDestro
         }
       }
     }
+
+    for ( var i = 0; i < this.teams[indexInTeam].extraProjectBids.length; i++) {
+      for ( var j = 0; j < teamBids.length; j++) {
+        if (this.teams[indexInTeam].extraProjectBids[i].projectId === teamBids[j].projectId) {
+          teamBids[j].bid = this.teams[indexInTeam].extraProjectBids[i].bid;
+        }
+      }
+    }
     return teamBids;
   }
 
@@ -174,14 +186,20 @@ export class AdminTeamScoresComponent implements AfterViewInit, OnInit, OnDestro
   }
 
   saveProjectAssignment() {
+    for ( var i = 0; i < this.teams.length; i++) {
+      Teams.update(this.teams[i]._id, {
+        $set: {
+          projectId: this.teams[i].projectId
+        }
+      });
+    }
 
+    this.router.navigate(['/admin']);
   }
 
   removeFromAssignment(team: Team) {
-    console.log("removing teams assignment...");
     for ( var i = 0; i < this.projectAssignment.length; i++) {
       if (this.projectAssignment[i].projectId === team.projectId) {
-        console.log("found projectAssignment position..")
         this.projectAssignment[i].available = true;
       }
     }
@@ -189,7 +207,6 @@ export class AdminTeamScoresComponent implements AfterViewInit, OnInit, OnDestro
   }
 
   registerProjectAssignment(team: Team, pa: any) {
-    console.log("clicked on ", pa.projectName);
     team.projectId = pa.projectId;
     pa.available = false;
     // for (var i = 0; i < this.projectAssignment.length; i++) {

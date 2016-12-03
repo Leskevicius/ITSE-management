@@ -8,6 +8,7 @@ import { AdminTeamDetailsComponent } from './admin-team-details.component';
 import { AdminProjectsListComponent } from './admin-projects-list.component';
 import { AdminProjectDetailsComponent } from './admin-project-details.component';
 import { AdminTeamScoresComponent } from './admin-team-scores.component';
+import { AdminTeamBidsComponent } from './admin-team-bids.component';
 
 export const ADMIN_HOME_DECLARATIONS = [
   AdminHomeComponent,
@@ -19,5 +20,6 @@ export const ADMIN_HOME_DECLARATIONS = [
   AdminTeamDetailsComponent,
   AdminProjectsListComponent,
   AdminProjectDetailsComponent,
-  AdminTeamScoresComponent
+  AdminTeamScoresComponent,
+  AdminTeamBidsComponent
 ];

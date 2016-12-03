@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Meteor } from 'meteor/meteor'
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -31,6 +32,9 @@ export class TeamRecComponent implements OnInit, OnDestroy {
   projectSub: Subscription;
   topProject: Project;
   projects: Project[];
+  newProjectBids: ProjectBid[];
+
+  isPM: boolean = false;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -43,12 +47,17 @@ export class TeamRecComponent implements OnInit, OnDestroy {
       this.teamSub = MeteorObservable.subscribe('team', this.teamId).subscribe(() => {
         this.team = Teams.findOne();
 
-
+        this.isPM = this.checkPremissions('pm', 'default-group');
+        if (this.isPM) {
+          console.log("im PM");
+        } else {
+          console.log("isPm is false");
+        }
         this.projectSub = MeteorObservable.subscribe('projects').subscribe(() => {
           this.projects = Projects.find({}).fetch();
           this.populateTeamBids();
           this.topProject = Projects.findOne(this.teamBids[0].projectId);
-
+          this.newProjectBids = this.team.extraProjectBids;
 
         });
       });
@@ -83,6 +92,15 @@ export class TeamRecComponent implements OnInit, OnDestroy {
         }
       }
     }
+
+    for ( var i = 0; i < this.team.extraProjectBids.length; i++) {
+      for ( var j = 0; j < this.teamBids.length; j++) {
+        if (this.team.extraProjectBids[i].projectId === this.teamBids[j].projectId) {
+          this.teamBids[j].bid = this.team.extraProjectBids[i].bid;
+        }
+      }
+    }
+
     this.teamBids.sort(function(a,b) {
       if (a.bid < b.bid) {
         return 1
@@ -96,5 +114,43 @@ export class TeamRecComponent implements OnInit, OnDestroy {
     this.paramsSub.unsubscribe();
     this.teamSub.unsubscribe();
     this.projectSub.unsubscribe();
+  }
+
+  checkPremissions(accountType: string, group: string): boolean {
+    var booleanValue = Roles.userIsInRole(Meteor.userId(),
+                              [accountType], group);
+    return booleanValue;
+  }
+
+  addBid(teamBid: ProjectRecBid) {
+    if (this.team.extraBids === 0) {
+      return;
+    }
+    teamBid.bid = teamBid.bid + 1;
+    this.team.extraBids = this.team.extraBids - 1;
+
+    var found : boolean = false;
+    for ( var i = 0; i < this.newProjectBids.length; i++ ) {
+      if (this.newProjectBids[i].projectId === teamBid.projectId) {
+        this.newProjectBids[i].bid++;
+        found = true;
+      }
+    }
+
+    if (!found) {
+      this.newProjectBids.push({
+        projectId: teamBid.projectId,
+        bid : 1
+      });
+    }
+  }
+
+  saveBids() {
+    Teams.update(this.team._id, {
+      $set : {
+        extraBids: this.team.extraBids,
+        extraProjectBids: this.newProjectBids
+      }
+    });
   }
 }

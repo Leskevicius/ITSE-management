@@ -46,7 +46,9 @@ export class TeamsCreateComponent implements OnInit, OnDestroy {
         name: this.addForm.value.name,
         owner: Meteor.userId(),
         memberId: [Meteor.userId()],
-        projectBids: [myNewBid]
+        projectBids: [myNewBid],
+        extraBids: 0,
+        extraProjectBids: []
       });
       // must register students entry with team document id
       var id = Teams.findOne({owner: Meteor.userId()})._id;

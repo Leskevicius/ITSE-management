@@ -45,8 +45,8 @@
       </md-grid-tile>
       <md-grid-tile *ngIf="team.projectId">
         {{team.projectId | displayProjectName:projects}}
-        <button md-mini-fab (click)="removeFromAssignment(team)" >
-          <md-icon class="md-15">clear</md-icon>
+        <button md-mini-fab (click)="removeFromAssignment(team)" style="margin-left:15px;">
+          <md-icon class="md-1">clear</md-icon>
         </button>
       </md-grid-tile>
     </md-grid-list>

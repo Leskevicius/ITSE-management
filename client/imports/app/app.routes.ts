@@ -20,6 +20,7 @@ import { AdminTeamDetailsComponent } from './home/admin/admin-team-details.compo
 import { AdminProjectsListComponent } from './home/admin/admin-projects-list.component';
 import { AdminProjectDetailsComponent } from './home/admin/admin-project-details.component';
 import { AdminTeamScoresComponent } from './home/admin/admin-team-scores.component';
+import { AdminTeamBidsComponent } from './home/admin/admin-team-bids.component';
 
 // landing page @ account management stuff
 import { LandingPageComponent } from './landing/landing-page.component';
@@ -66,6 +67,7 @@ export const routes: Route[] = [
   { path: 'admin/projects', component: AdminProjectsListComponent, canActivate: ['canActivateForAdmin']},
   { path: 'admin/project/:projectId', component: AdminProjectDetailsComponent, canActivate: ['canActivateForAdmin']},
   { path: 'admin/teamScores', component: AdminTeamScoresComponent, canActivate: ['canActivateForAdmin']},
+  { path: 'admin/teamBids', component: AdminTeamBidsComponent, canActivate: ['canActivateForAdmin']},
   { path: 'projects', component: ProjectsListComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'project/:projectId', component: ProjectDetailsComponent, canActivate: ['canActivateForLoggedIn'] },
   { path: 'projects/create', component: ProjectsFormComponent },
