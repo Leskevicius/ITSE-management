@@ -29,6 +29,7 @@ export class AdminTeamDetailsComponent implements OnInit, OnDestroy {
   teamBids: ProjectRecBid[] = [];
   projectSub: Subscription;
   projects: Project[];
+  teamsSub: Subscription;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -37,17 +38,25 @@ export class AdminTeamDetailsComponent implements OnInit, OnDestroy {
     .map(params => params['teamId'])
     .subscribe(teamId => {
       this.teamId = teamId;
-
-      this.team = Teams.findOne(this.teamId);
-      this.projectSub = MeteorObservable.subscribe('projects').subscribe(() => {
-        this.projects = Projects.find({}).fetch();
-        this.populateTeamBids();
+      this.teamsSub = MeteorObservable.subscribe('teams').subscribe(() => {
+        this.team = Teams.findOne(this.teamId);
+        console.log(this.teamId);
+        if (this.team) {
+          console.log("team found");
+        } else {
+          console.log("team not found");
+        }
+        this.projectSub = MeteorObservable.subscribe('projects').subscribe(() => {
+          this.projects = Projects.find({}).fetch();
+          this.populateTeamBids();
+        });
       });
     });
   }
 
   ngOnDestroy() {
     this.paramsSub.unsubscribe();
+    this.teamsSub.unsubscribe();
   }
 
   populateTeamBids() {
@@ -86,7 +95,7 @@ export class AdminTeamDetailsComponent implements OnInit, OnDestroy {
         }
       }
     }
-    
+
     this.teamBids.sort(function(a,b) {
       if (a.bid < b.bid) {
         return 1

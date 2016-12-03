@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
+import { Router } from '@angular/router';
 
 
 import 'rxjs/add/operator/map';
@@ -26,7 +27,7 @@ export class AdminStudentDetailsComponent implements OnInit, OnDestroy {
   projects: Project[];
   projectsSub: Subscription;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.paramsSub = this.route.params
@@ -54,5 +55,16 @@ export class AdminStudentDetailsComponent implements OnInit, OnDestroy {
     this.paramsSub.unsubscribe();
     this.projectsSub.unsubscribe();
     this.studentsSub.unsubscribe();
+  }
+
+  updateStudent() {
+    Students.update(this.student._id, {
+      $set : {
+        'contact.phone' : this.student.contact.phone,
+        'contact.email' : this.student.contact.email
+      }
+    });
+
+    this.router.navigate(['/admin']);
   }
 }

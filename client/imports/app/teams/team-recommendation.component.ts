@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
+import { Router } from '@angular/router';
+
 
 import 'rxjs/add/operator/map';
 
@@ -36,7 +38,7 @@ export class TeamRecComponent implements OnInit, OnDestroy {
 
   isPM: boolean = false;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.paramsSub = this.route.params
@@ -152,5 +154,7 @@ export class TeamRecComponent implements OnInit, OnDestroy {
         extraProjectBids: this.newProjectBids
       }
     });
+
+    this.router.navigate(['/team', this.teamId]);
   }
 }

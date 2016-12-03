@@ -8,6 +8,7 @@ import { StudenttDetailsComponent } from './home/student/student-details.compone
 // client stuff
 import { ClientHomeComponent } from './home/client/client-home.component';
 import { UpdateClientProfileComponent } from './home/client/update-client-profile.component';
+import { ClientProjectDetailsComponent } from './home/client/client-project-details.component';
 
 // admin stuff
 import { AdminHomeComponent } from './home/admin/admin-home.component';
@@ -57,6 +58,7 @@ export const routes: Route[] = [
   { path: 'client', component: ClientHomeComponent, canActivate: ['canActivateForClient']},
   { path: 'client/projects', component: ProjectsClientListComponent, canActivate: ['canActivateForClient'] },
   { path: 'client/profile', component: UpdateClientProfileComponent, canActivate: ['canActivateForClient'] },
+  { path: 'client/project/:projectId', component: ClientProjectDetailsComponent, canActivate: ['canActivateForClient'] },
   { path: 'admin', component: AdminHomeComponent, canActivate: ['canActivateForAdmin']},
   { path: 'admin/clients', component: AdminClientListComponent, canActivate: ['canActivateForAdmin']},
   { path: 'admin/client/:clientId', component: AdminClientDetailsComponent, canActivate: ['canActivateForAdmin']},

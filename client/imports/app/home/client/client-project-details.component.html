@@ -1,0 +1,21 @@
+<md-card *ngIf="project" class="demo-card demo-basic content-card">
+  <md-toolbar color="primary" class="content-card-md-toolbar">Project Details</md-toolbar>
+  <md-card-content>
+    <form (submit)="updateProject()" layout="column" layout-fill layout-padding layout-margin>
+      <md-input name="name" class="demo-full-width" [(ngModel)]="project.name" placeholder="Name">
+      </md-input>
+      <div layout="row">
+        <md-input name="description" class="demo-full-width" [(ngModel)]="project.description" placeholder="Description"></md-input>
+      </div>
+      <div layout="row">
+        <md-input name="features"class="demo-full-width" [(ngModel)]="project.features" placeholder="Features"></md-input>
+      </div>
+      <div layout="row">
+        <md-input name="contact"class="demo-full-width" [(ngModel)]="project.contact" placeholder="Contact"></md-input>
+      </div>
+      <div layout="row" layout-align="space-between center">
+        <button md-raised-button class="md-primary" type="submit" aria-label="updateProject">Update</button>
+      </div>
+    </form>
+  </md-card-content>
+</md-card>
